@@ -38,7 +38,7 @@ public class IndexController {
         user.setUsername("lhba2sura");
         user.setEmail("lhbasura@gmail.com");
         user.setPassword("fjasi9ojei@fd");
-        if (!userService.exist(user)) {
+        if (!userService.exist(user.getUsername())) {
 
           //  userService.insert(user);
         }

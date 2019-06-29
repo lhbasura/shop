@@ -1,34 +1,32 @@
 package com.lhb.sh.config;
 
-import com.lhb.sh.service.auth.DbUserDetailsService;
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.context.annotation.Bean;
+import com.lhb.sh.filter.auth.LoginFilter;
 import org.springframework.context.annotation.Configuration;
-import org.springframework.security.config.annotation.authentication.builders.AuthenticationManagerBuilder;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
 import org.springframework.security.config.annotation.web.configuration.EnableWebSecurity;
 import org.springframework.security.config.annotation.web.configuration.WebSecurityConfigurerAdapter;
-import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
+import org.springframework.security.web.authentication.UsernamePasswordAuthenticationFilter;
 
 @Configuration
 @EnableWebSecurity
-class SecurityConfig extends WebSecurityConfigurerAdapter {
+class WebSecurityConfig extends WebSecurityConfigurerAdapter {
 
-
+  //  LoginFilter loginFilter;
 
     @Override
     protected void configure(HttpSecurity http) throws Exception {
         http
                 .authorizeRequests()
                 .antMatchers("/user*").hasRole("USER")
-               // .antMatchers("/index").permitAll()
+                // .antMatchers("/index").permitAll()
                 .and()
                 .formLogin().loginPage("/login").defaultSuccessUrl("/")
                 .and()
                 .logout().logoutUrl("/logout").logoutSuccessUrl("/login");
+        http.addFilterAt(LoginFilter(), UsernamePasswordAuthenticationFilter.class);
     }
 
-//    @Override
+    //    @Override
 //    protected void configure(AuthenticationManagerBuilder auth) throws Exception{
 //        //基于内存来存储用户信息
 //        auth.inMemoryAuthentication().passwordEncoder(new BCryptPasswordEncoder())
@@ -36,9 +34,8 @@ class SecurityConfig extends WebSecurityConfigurerAdapter {
 //                .withUser("admin").password(new BCryptPasswordEncoder().encode("456")).roles("USER","ADMIN");
 //    }
 //
-    @Bean
-    public BCryptPasswordEncoder passwordEncoder() { //密码加密
-        return new BCryptPasswordEncoder(4);
+    private LoginFilter LoginFilter() {
+        return new LoginFilter("/login");
     }
 
 

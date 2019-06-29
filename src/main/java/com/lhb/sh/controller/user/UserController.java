@@ -16,6 +16,7 @@ import org.springframework.web.bind.annotation.*;
 @Controller
 @Slf4j
 public class UserController extends BaseController {
+
     @Autowired
     UserService userServiceImp;
 
