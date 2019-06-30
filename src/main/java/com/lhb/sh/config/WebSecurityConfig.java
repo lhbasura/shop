@@ -1,17 +1,22 @@
 package com.lhb.sh.config;
 
 import com.lhb.sh.filter.auth.LoginFilter;
+import com.lhb.sh.provider.auth.CustomerAuthenticationProvider;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.context.annotation.ComponentScan;
 import org.springframework.context.annotation.Configuration;
+import org.springframework.security.config.annotation.authentication.builders.AuthenticationManagerBuilder;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
 import org.springframework.security.config.annotation.web.configuration.EnableWebSecurity;
 import org.springframework.security.config.annotation.web.configuration.WebSecurityConfigurerAdapter;
-import org.springframework.security.web.authentication.UsernamePasswordAuthenticationFilter;
 
+/*
+plieas see https://blog.csdn.net/neweastsun/article/details/79824019
+ */
 @Configuration
 @EnableWebSecurity
+@ComponentScan("com.lhb.sh")
 class WebSecurityConfig extends WebSecurityConfigurerAdapter {
-
-  //  LoginFilter loginFilter;
 
     @Override
     protected void configure(HttpSecurity http) throws Exception {
@@ -23,8 +28,17 @@ class WebSecurityConfig extends WebSecurityConfigurerAdapter {
                 .formLogin().loginPage("/login").defaultSuccessUrl("/")
                 .and()
                 .logout().logoutUrl("/logout").logoutSuccessUrl("/login");
-        http.addFilterAt(LoginFilter(), UsernamePasswordAuthenticationFilter.class);
     }
+
+    @Autowired
+    private CustomerAuthenticationProvider authProvider;
+
+    @Override
+    protected void configure(AuthenticationManagerBuilder auth) throws Exception {
+
+        auth.authenticationProvider(authProvider);
+    }
+
 
     //    @Override
 //    protected void configure(AuthenticationManagerBuilder auth) throws Exception{
@@ -34,9 +48,6 @@ class WebSecurityConfig extends WebSecurityConfigurerAdapter {
 //                .withUser("admin").password(new BCryptPasswordEncoder().encode("456")).roles("USER","ADMIN");
 //    }
 //
-    private LoginFilter LoginFilter() {
-        return new LoginFilter("/login");
-    }
 
 
 //    @Bean
