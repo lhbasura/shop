@@ -8,29 +8,27 @@ package com.lhb.sh.util.enums;
  * @date: 2017年2月14日 上午11:39:36
  * @version: [1.0]
  */
-public enum GoodsStaEnum
-{
-    success(200,"操作成功");
-    
-    
+public enum GoodsStaEnum {
+    success(200, "操作成功");
+
+
     private int code;
     private String info;
 
-    private GoodsStaEnum(String info)
-    {
+    private GoodsStaEnum(String info) {
         this.info = info;
     }
-    private GoodsStaEnum(int code, String info)
-    {
+
+    private GoodsStaEnum(int code, String info) {
         this.code = code;
         this.info = info;
     }
-    public int getCode()
-    {
+
+    public int getCode() {
         return code;
     }
-    public String getInfo()
-    {
+
+    public String getInfo() {
         return info;
     }
 }

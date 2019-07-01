@@ -20,5 +20,5 @@ public interface UserService {
 
     User getUserByUsername(String username);
 
-    void login(String username,String password);
+    void login(String username, String password);
 }

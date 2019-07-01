@@ -20,14 +20,14 @@ public class DbUserDetailsService implements UserDetailsService {
     private final UserService userService;
 
     @Autowired
-    DbUserDetailsService(UserService userService){
+    DbUserDetailsService(UserService userService) {
         this.userService = userService;
     }
 
     @Override
     public UserDetails loadUserByUsername(String username) throws UsernameNotFoundException {
         User user = userService.getUserByUsername(username);
-        if (user == null){
+        if (user == null) {
             throw new UsernameNotFoundException("用户不存在！");
         }
         List<SimpleGrantedAuthority> simpleGrantedAuthorities = new ArrayList<>();

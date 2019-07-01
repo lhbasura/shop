@@ -40,10 +40,8 @@ public class IndexController {
         user.setPassword("fjasi9ojei@fd");
         if (!userService.exist(user.getUsername())) {
 
-          //  userService.insert(user);
-        }
-        else
-        {
+            //  userService.insert(user);
+        } else {
             Log.debug("the user is exist");
         }
 

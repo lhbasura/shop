@@ -48,12 +48,11 @@ public class UserServiceImp implements UserService {
 
     @Override
     public void login(String username, String password) {
-        User user=userMapper.findOneByUsername(username);
-        if(user==null)
-        {
+        User user = userMapper.findOneByUsername(username);
+        if (user == null) {
             throw new UsernameNotFoundException(AccountStaEnum.userNotFound.getInfo());
         }
-        if (!(user.getUsername().equals(username) && user.getPassword().equals(Security.encode(username,password)))){
+        if (!(user.getUsername().equals(username) && user.getPassword().equals(Security.encode(username, password)))) {
             throw new RuntimeException("用户名或密码错误！");
         }
     }

@@ -37,9 +37,9 @@ public class UserController extends BaseController {
     public String register(User user, @RequestParam("confirm") String confirm) {
         try {
             userServiceImp.register(user);
-            return ResultUtil.getJson(AccountStaEnum.success.getCode(),AccountStaEnum.success.getInfo());
-        }  catch (UserException e) {
-            return ResultUtil.getJson(e.getCode(),e.getMessage());
+            return ResultUtil.getJson(AccountStaEnum.success.getCode(), AccountStaEnum.success.getInfo());
+        } catch (UserException e) {
+            return ResultUtil.getJson(e.getCode(), e.getMessage());
         }
 
 

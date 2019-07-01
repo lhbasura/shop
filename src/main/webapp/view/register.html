@@ -121,10 +121,10 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
             },
             dataType: "json"
         }
-        $password.on('input',function(){
+        $password.on('input', function () {
             if ($(this).val() != $password.val()) {
                 $confirm.get(0).setCustomValidity('确认密码与密码不一致')
-            }else{
+            } else {
                 $confirm.get(0).setCustomValidity('')
             }
         })

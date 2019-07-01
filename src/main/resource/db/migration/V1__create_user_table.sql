@@ -1,7 +1,7 @@
 CREATE TABLE user
 (
   id                INT(10) UNSIGNED                        NOT NULL AUTO_INCREMENT,
-  username              VARCHAR(255) COLLATE utf8mb4_unicode_ci NOT NULL,
+  username          VARCHAR(255) COLLATE utf8mb4_unicode_ci NOT NULL,
   email             VARCHAR(255) COLLATE utf8mb4_unicode_ci NOT NULL,
   email_verified_at TIMESTAMP                               NULL DEFAULT NULL,
   password          VARCHAR(255) COLLATE utf8mb4_unicode_ci NOT NULL,
