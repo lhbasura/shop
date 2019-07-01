@@ -22,6 +22,7 @@ public class UserController extends BaseController {
 
     @RequestMapping("/login")
     public String loginPage() {
+        log.info("you can go the loginPage");
         return "login";
     }
 
