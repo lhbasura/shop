@@ -1,7 +1,12 @@
 package com.lhb.sh.service.auth;
 
+import com.lhb.sh.exception.user.NullValueException;
+import com.lhb.sh.exception.user.RepeatException;
+import com.lhb.sh.exception.user.UserException;
 import com.lhb.sh.model.User;
 import com.lhb.sh.service.user.UserService;
+import com.lhb.sh.util.Security;
+import com.lhb.sh.util.enums.AccountStaEnum;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.authority.SimpleGrantedAuthority;
@@ -33,6 +38,17 @@ public class DbUserDetailsService implements UserDetailsService {
         List<SimpleGrantedAuthority> simpleGrantedAuthorities = new ArrayList<>();
         simpleGrantedAuthorities.add(new SimpleGrantedAuthority("USER"));
         return new org.springframework.security.core.userdetails.User(user.getUsername(), user.getPassword(), simpleGrantedAuthorities);
+    }
+
+    public int register(User user) throws UserException {
+        if (user.getUsername() == null) {
+            throw new NullValueException(AccountStaEnum.nameNull);
+        }
+        if (userService.exist(user.getUsername())) {
+            throw new RepeatException(AccountStaEnum.registerRepeat);
+        }
+        user.setPassword(Security.encode(user.getUsername(), user.getPassword()));
+        return userService.insert(user);
     }
 
 }

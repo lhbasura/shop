@@ -16,9 +16,7 @@ public interface UserService {
 
     boolean exist(String username);
 
-    int register(User user) throws UserException;
 
     User getUserByUsername(String username);
 
-    void login(String username, String password);
 }

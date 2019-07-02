@@ -115,6 +115,7 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
             success: function (response) {
                 if (response.code == 200) {
                     console.log('注册成功')
+                    location.href='/Shop/login'
                 } else {
                     console.log(response)
                 }

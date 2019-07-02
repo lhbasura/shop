@@ -10,7 +10,7 @@ import org.springframework.security.config.annotation.web.configuration.EnableWe
 import org.springframework.security.config.annotation.web.configuration.WebSecurityConfigurerAdapter;
 
 /*
-plieas see https://blog.csdn.net/neweastsun/article/details/79824019
+please see https://blog.csdn.net/neweastsun/article/details/79824019
  */
 @Slf4j
 @Configuration
@@ -22,10 +22,18 @@ class WebSecurityConfig extends WebSecurityConfigurerAdapter {
 
     @Override
     protected void configure(HttpSecurity http) throws Exception {
-        http.authorizeRequests().antMatchers("/user*").hasRole("USER")
-                // .antMatchers("/index").permitAll()
-                .and().formLogin().loginPage("/login").defaultSuccessUrl("/").and().logout().logoutUrl("/logout")
-                .logoutSuccessUrl("/login");
+        http
+                .authorizeRequests()
+                .antMatchers("/css/*","/js/*","/fonts/*","/images/*" ).permitAll()
+                .antMatchers("/register","/login","/index").permitAll()
+                .anyRequest().authenticated()
+                .and()
+                .formLogin()
+                .loginPage("/login")
+                .permitAll()
+                .and()
+                .logout()
+                .permitAll();
     }
 
     @Override

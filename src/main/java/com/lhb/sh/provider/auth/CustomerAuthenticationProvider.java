@@ -21,7 +21,6 @@ public class CustomerAuthenticationProvider implements AuthenticationProvider {
     @Autowired
     DbUserDetailsService userDetailsService;
 
-
     @Override
     public Authentication authenticate(Authentication authentication) throws AuthenticationException {
 
@@ -29,18 +28,17 @@ public class CustomerAuthenticationProvider implements AuthenticationProvider {
         log.info("the password is:   " + authentication.getCredentials());
 
         // 根据用户输入的用户名获取该用户名已经在服务器上存在的用户详情，如果没有则返回null
-        UserDetails userDetails = this.userDetailsService.loadUserByUsername(authentication.getName());
+        UserDetails userDetails = userDetailsService.loadUserByUsername(authentication.getName());
         String password = Security.compact(authentication.getName(), authentication.getCredentials().toString());
 
         try {
             log.info("the user name in database is:   " + userDetails.getUsername());
             log.info("the password in databases is:    " + userDetails.getPassword());
             log.info("the privileges in databases is:   " + userDetails.getAuthorities());
-
-
             //判断用户输入的密码和服务器上已经保存的密码是否一致
             if (Security.isMatch(password, userDetails.getPassword())) {
                 log.info("author success");
+                log.debug("authorites: "+ userDetails.getAuthorities());
                 //如果验证通过，将返回一个UsernamePasswordAuthenticaionToken对象
                 return new UsernamePasswordAuthenticationToken(userDetails,
                         authentication.getCredentials(), userDetails.getAuthorities());

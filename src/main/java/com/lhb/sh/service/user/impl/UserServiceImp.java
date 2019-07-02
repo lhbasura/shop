@@ -31,31 +31,13 @@ public class UserServiceImp implements UserService {
         return userMapper.findOneByUsername(username) != null;
     }
 
-    public int register(User user) throws UserException {
-        if (user.getUsername() == null) {
-            throw new NullValueException(AccountStaEnum.nameNull);
-        }
-        if (this.exist(user.getUsername())) {
-            throw new RepeatException(AccountStaEnum.registerRepeat);
-        }
-        user.setPassword(Security.encode(user.getUsername(), user.getPassword()));
-        return this.insert(user);
-    }
+
 
     public User getUserByUsername(String username) {
         return userMapper.findOneByUsername(username);
     }
 
-    @Override
-    public void login(String username, String password) {
-        User user = userMapper.findOneByUsername(username);
-        if (user == null) {
-            throw new UsernameNotFoundException(AccountStaEnum.userNotFound.getInfo());
-        }
-        if (!(user.getUsername().equals(username) && user.getPassword().equals(Security.encode(username, password)))) {
-            throw new RuntimeException("用户名或密码错误！");
-        }
-    }
+
 
 
 }

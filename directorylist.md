@@ -1,6 +1,3 @@
-# Shop
->基于SpringMVC搭建的电商项目整合了SpringSecurity,thymeleaf,lombok
-## 目录结构
 ```
 .
 ├── README.md
@@ -14,12 +11,12 @@
     │   │       └── lhb
     │   │           └── sh
     │   │               ├── config
-    │   │               │   └── WebSecurityConfig.java //SpringSecurity配置
+    │   │               │   └── WebSecurityConfig.java
     │   │               ├── controller
-    │   │               │   ├── BaseController.java //所有Controller的父类
+    │   │               │   ├── BaseController.java
     │   │               │   ├── IndexController.java
-    │   │               │   ├── auth     //认证模块
-    │   │               │   │   └── AuthController.java 
+    │   │               │   ├── auth
+    │   │               │   │   └── AuthController.java
     │   │               │   └── user
     │   │               │       └── UserController.java
     │   │               ├── exception

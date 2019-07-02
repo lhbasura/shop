@@ -2,27 +2,37 @@ package com.lhb.sh.controller;
 
 import com.lhb.sh.model.User;
 import com.lhb.sh.service.user.UserService;
+import lombok.extern.slf4j.Slf4j;
 import org.jfree.util.Log;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.ui.ModelMap;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.ResponseBody;
 
+import java.security.Principal;
 import java.util.List;
 
-
+@Slf4j
 @Controller
 public class IndexController {
     @Autowired
     UserService userService;
 
     @RequestMapping("/index")
-    public String indexPage(Model model) {
-        String userName = "user";
-        model.addAttribute("userName", userName);
+    public String indexPage(Principal principal, Model model) {
+
+
         return "index";
+    }
+    @GetMapping(value = "/username")
+    @ResponseBody
+    public String currentUserName(Principal principal) {
+        return principal.getName();
     }
 
     @RequestMapping("/index2")
@@ -47,7 +57,7 @@ public class IndexController {
 
         List<User> userList = userService.selectAll();
         model.addAttribute("userlist", userList);
-        return "test";
+        return "userlist";
     }
 
 }
