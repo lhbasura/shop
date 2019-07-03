@@ -33,7 +33,7 @@
             </list>
         </property>
     </bean>
-    <mvc:annotation-driven/>
+
 
     <!-- 2.静态资源默认servlet配置
         (1)加入对静态资源的处理：js,gif,png
@@ -68,6 +68,20 @@
         <property name="cache" value="false"/>
         <property name="characterEncoding" value="UTF-8"/>
     </bean>
+
+    <!--<bean id="messageSource" class="org.springframework.context.support.ReloadableResourceBundleMessageSource">-->
+        <!--<property name="basename" value="classpath:message"/>-->
+        <!--<property name="fileEncodings" value="utf-8"/>-->
+        <!--<property name="cacheSeconds" value="120"/>-->
+    <!--</bean>-->
+
+    <!-- 以下 validator  ConversionService 在使用 mvc:annotation-driven 会 自动注册-->
+    <bean id="validator" class="org.springframework.validation.beanvalidation.LocalValidatorFactoryBean">
+        <property name="providerClass" value="org.hibernate.validator.HibernateValidator" />
+        <!-- 如果不加默认到 使用classpath下的 ValidationMessages.properties -->
+        <!--<property name="validationMessageSource" ref="messageSource" />-->
+    </bean>
+    <mvc:annotation-driven validator="validator"/>
 
 
     <!-- 4.扫描web相关的bean -->
