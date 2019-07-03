@@ -10,7 +10,10 @@ import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.*;
+
+import javax.validation.Valid;
 
 @Slf4j
 @Controller
@@ -33,7 +36,11 @@ public class AuthController extends BaseController {
 
     @PostMapping("/register")
     @ResponseBody
-    public String register(User user, @RequestParam("confirm") String confirm) {
+    public String register(@Valid User user, BindingResult bindingResult) {
+        if(bindingResult.hasErrors())
+        {
+            return "has errors! ";
+        }
         try {
             dbUserDetailsService.register(user);
             return ResultUtil.getJson(AccountStaEnum.success.getCode(), AccountStaEnum.success.getInfo());

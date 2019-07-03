@@ -44,6 +44,9 @@ public class DbUserDetailsService implements UserDetailsService {
         if (user.getUsername() == null) {
             throw new NullValueException(AccountStaEnum.nameNull);
         }
+        if (user.getPassword() == null) {
+            throw new NullValueException(AccountStaEnum.pswdNull);
+        }
         if (userService.exist(user.getUsername())) {
             throw new RepeatException(AccountStaEnum.registerRepeat);
         }
