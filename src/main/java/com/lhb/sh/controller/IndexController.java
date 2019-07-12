@@ -3,14 +3,12 @@ package com.lhb.sh.controller;
 import com.lhb.sh.model.User;
 import com.lhb.sh.service.user.UserService;
 import lombok.extern.slf4j.Slf4j;
-import org.jfree.util.Log;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.ui.ModelMap;
 import org.springframework.validation.BindingResult;
 import org.springframework.validation.ObjectError;
-import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.*;
 
 import javax.validation.Valid;
@@ -28,6 +26,12 @@ public class IndexController {
 
 
         return "index";
+    }
+
+    @GetMapping("test")
+    @ResponseBody
+    public String test(){
+        return "this  a page";
     }
 
     @GetMapping(value = "/username")
@@ -53,7 +57,7 @@ public class IndexController {
 
             //  userService.insert(user);
         } else {
-            Log.debug("the user is exist");
+            log.debug("the user is exist");
         }
 
         List<User> userList = userService.selectAll();

@@ -11,7 +11,9 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
+import org.springframework.validation.ObjectError;
 import org.springframework.web.bind.annotation.*;
+
 import javax.validation.Valid;
 
 @Slf4j
@@ -23,7 +25,7 @@ public class AuthController extends BaseController {
     @GetMapping("/login")
     public String loginPage(Model model) {
         log.info("you can go the loginPage");
-    //    model.addAttribute("username","test user");
+        //    model.addAttribute("username","test user");
         return "login";
     }
 
@@ -36,10 +38,6 @@ public class AuthController extends BaseController {
     @PostMapping("/register")
     @ResponseBody
     public String register(@Valid User user, BindingResult bindingResult) {
-        if(bindingResult.hasErrors())
-        {
-            return "has errors! ";
-        }
         try {
             dbUserDetailsService.register(user);
             return ResultUtil.getJson(AccountStaEnum.success.getCode(), AccountStaEnum.success.getInfo());
