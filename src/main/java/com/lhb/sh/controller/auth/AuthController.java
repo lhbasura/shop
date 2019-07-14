@@ -16,6 +16,7 @@ import javax.validation.Valid;
 
 @Slf4j
 @Controller
+@RequestMapping("/auth")
 public class AuthController extends BaseController {
     @Autowired
     DbUserDetailsService dbUserDetailsService;
