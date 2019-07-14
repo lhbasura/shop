@@ -28,6 +28,14 @@
             <param-name>contextConfigLocation</param-name>
             <param-value>classpath:spring/spring-web.xml</param-value>
         </init-param>
+        <init-param>
+            <param-name>encoding</param-name>
+            <param-value>UTF-8</param-value>
+        </init-param>
+        <init-param>
+            <param-name>forceEncoding</param-name>
+            <param-value>true</param-value>
+        </init-param>
     </servlet>
     <servlet-mapping>
         <servlet-name>mvc-dispatcher</servlet-name>
@@ -59,6 +67,7 @@
         <filter-name>springSecurityFilterChain</filter-name>
         <filter-class>org.springframework.web.filter.DelegatingFilterProxy</filter-class>
     </filter>
+
     <filter-mapping>
         <filter-name>springSecurityFilterChain</filter-name>
         <url-pattern>/*</url-pattern>

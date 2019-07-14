@@ -11,6 +11,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
+import org.springframework.validation.DataBinder;
 import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.*;
 import javax.validation.Valid;
@@ -20,6 +21,9 @@ import javax.validation.Valid;
 public class AuthController extends BaseController {
     @Autowired
     DbUserDetailsService dbUserDetailsService;
+    @InitBinder
+    public void initBinder(DataBinder binder) {
+    }
 
     @GetMapping("/login")
     public String loginPage(Model model) {
@@ -34,7 +38,7 @@ public class AuthController extends BaseController {
         return "register";
     }
 
-    @PostMapping("/register")
+    @PostMapping(value = "/register")
     @ResponseBody
     public String register(@Validated User user, BindingResult bindingResult) {
         if(bindingResult.hasErrors())

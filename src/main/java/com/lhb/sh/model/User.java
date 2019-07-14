@@ -4,7 +4,7 @@ import java.io.Serializable;
 import java.util.Date;
 
 import lombok.Data;
-import org.hibernate.validator.constraints.Length;
+
 
 import javax.validation.constraints.Email;
 import javax.validation.constraints.Size;
@@ -22,7 +22,7 @@ public class User implements Serializable {
 
     private Date emailVerifiedAt;
 
-    @Length(min = 6)
+    @Size(min = 6)
     private String password;
 
     private String rememberToken;
