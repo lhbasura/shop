@@ -2,6 +2,7 @@
 .idea/
 .vscode
 *.iml
+application-*.yml
 .DS*
 #env
 jdbc.properties

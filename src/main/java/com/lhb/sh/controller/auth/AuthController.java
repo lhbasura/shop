@@ -11,12 +11,12 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
+import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.*;
 import javax.validation.Valid;
 
 @Slf4j
 @Controller
-@RequestMapping("/auth")
 public class AuthController extends BaseController {
     @Autowired
     DbUserDetailsService dbUserDetailsService;
@@ -36,7 +36,7 @@ public class AuthController extends BaseController {
 
     @PostMapping("/register")
     @ResponseBody
-    public String register(@Valid User user, BindingResult bindingResult) {
+    public String register(@Validated User user, BindingResult bindingResult) {
         if(bindingResult.hasErrors())
         {
             return "has errors! ";

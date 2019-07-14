@@ -7,13 +7,14 @@ import lombok.Data;
 import org.hibernate.validator.constraints.Length;
 
 import javax.validation.constraints.Email;
+import javax.validation.constraints.Size;
 
 
 @Data
 public class User implements Serializable {
     private Integer id;
 
-    @Length(min = 10, message = "your username is too short")
+    @Size(min = 10, message = "{item.user.name.length}")
     private String username;
 
     @Email

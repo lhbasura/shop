@@ -69,12 +69,25 @@
         <property name="characterEncoding" value="UTF-8"/>
     </bean>
 
+    <bean id="validator" class="org.springframework.validation.beanvalidation.LocalValidatorFactoryBean">
+        <property name="providerClass" value="org.hibernate.validator.HibernateValidator"></property>
+        <property name="validationMessageSource" ref="validationMessageSource"></property>
+    </bean>
+    <bean id="validationMessageSource" class="org.springframework.context.support.ReloadableResourceBundleMessageSource">
+        <property name="basenames">
+            <list>
+                <value>classpath:messages</value>
+            </list>
+        </property>
+        <property name="fileEncodings" value="utf8"></property>
+        <property name="cacheSeconds" value="120"></property>
+    </bean>
     <!--<bean id="messageSource" class="org.springframework.context.support.ReloadableResourceBundleMessageSource">-->
         <!--<property name="basename" value="classpath:message"/>-->
         <!--<property name="fileEncodings" value="utf-8"/>-->
         <!--<property name="cacheSeconds" value="120"/>-->
     <!--</bean>-->
     <context:component-scan base-package="com.lhb.sh"/>
-    <mvc:annotation-driven />
+    <mvc:annotation-driven validator="validator"/>
     <!-- 4.扫描web相关的bean -->
 </beans>
