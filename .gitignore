@@ -2,7 +2,7 @@
 .idea/
 .vscode
 *.iml
-*.yml
+*application-*.yml
 *.properties
 .DS*
 #env
