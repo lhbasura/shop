@@ -36,18 +36,18 @@
                                 </li>
                                 <li>
                                     <i class="glyphicon glyphicon-user"></i>
-                                    <a th:text="${#authentication.name}" th:href="@{/login}"></a>
+                                    <a th:text="${#authentication.name}" th:href="@{/auth/login}"></a>
                                 </li>
                             </ul>
 
                             <ul sec:authorize="isAnonymous()">
                                 <li>
                                     <i class="glyphicon glyphicon-log-in"></i>
-                                    <a th:href="@{/login}">Login</a>
+                                    <a th:href="@{/auth/login}">Login</a>
                                 </li>
                                 <li>
                                     <i class="glyphicon glyphicon-book"></i>
-                                    <a th:href="@{/register}">Register</a>
+                                    <a th:href="@{/auth/register}">Register</a>
                                 </li>
                             </ul>
                         </div>

@@ -88,7 +88,6 @@
         <!--&lt;!&ndash;optional我没弄明白，都说必须为true，但我测试true，false，不加都可以&ndash;&gt;-->
         <!--<optional>true</optional>-->
         <!--</dependency>-->
-
     </dependencies>
 
     <build>

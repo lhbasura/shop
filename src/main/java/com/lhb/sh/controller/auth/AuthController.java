@@ -15,9 +15,11 @@ import org.springframework.validation.ObjectError;
 import org.springframework.web.bind.annotation.*;
 
 import javax.validation.Valid;
+import java.util.List;
 
 @Slf4j
-@Controller
+@Controller(value = "auth")
+@RequestMapping("/auth")
 public class AuthController extends BaseController {
     @Autowired
     DbUserDetailsService dbUserDetailsService;
@@ -38,6 +40,10 @@ public class AuthController extends BaseController {
     @PostMapping("/register")
     @ResponseBody
     public String register(@Valid User user, BindingResult bindingResult) {
+        if (bindingResult.hasErrors()) {
+            List<ObjectError> errors = bindingResult.getAllErrors();
+            return ResultUtil.toJson(errors);
+        }
         try {
             dbUserDetailsService.register(user);
             return ResultUtil.getJson(AccountStaEnum.success.getCode(), AccountStaEnum.success.getInfo());
