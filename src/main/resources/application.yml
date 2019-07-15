@@ -5,6 +5,13 @@ server:
 mybatis:
   mapper-locations: classpath:/mybaits/mapper/*.xml
   config-location:  classpath:/mybatis/config/mybatis-config.xml
+swagger:
+  title: shop
+  description: api of shop
+  version: 2.1.2
+  name: lhbasura
+  url: http://lhbasura.github.io.com
+  email: lhbasura@gamail.com
 spring:
   profiles:
     active: local
