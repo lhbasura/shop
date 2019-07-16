@@ -1,4 +1,5 @@
 # Workspace
+*.gz
 .idea/
 .vscode
 *.iml
