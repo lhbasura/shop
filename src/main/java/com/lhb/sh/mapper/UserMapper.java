@@ -1,9 +1,6 @@
 package com.lhb.sh.mapper;
 
-import com.lhb.sh.model.User;
-import org.apache.ibatis.annotations.Param;
-
-import java.util.List;
+import com.lhb.sh.model.User;import org.apache.ibatis.annotations.Param;import java.util.List;
 
 public interface UserMapper {
     int deleteByPrimaryKey(Integer id);
@@ -18,7 +15,14 @@ public interface UserMapper {
 
     int updateByPrimaryKey(User record);
 
-    User findOneByUsername(@Param("username") String username);
+
+    User findOneByUsername(@Param("username")String username);
 
     List<User> selectAll();
+
+
+
+
+
+
 }

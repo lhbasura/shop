@@ -1,55 +1,74 @@
 package com.lhb.sh.service.user;
 
-import com.lhb.sh.event.UserRegisterEvent;
 import com.lhb.sh.exception.user.UserException;
-import com.lhb.sh.mapper.UserMapper;
-import com.lhb.sh.model.User;
 import lombok.extern.slf4j.Slf4j;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.ApplicationContext;
 import org.springframework.stereotype.Service;
 
 import javax.annotation.Resource;
+
+import com.lhb.sh.model.User;
+import com.lhb.sh.mapper.UserMapper;
+
 import java.util.List;
 
 @Slf4j
 @Service
 public class UserService {
+
     @Resource
     protected UserMapper userMapper;
 
     @Resource
     protected ApplicationContext applicationContext;
 
+    public int deleteByPrimaryKey(Integer id) {
+        return userMapper.deleteByPrimaryKey(id);
+    }
 
 
     public int insert(User record) {
         return userMapper.insert(record);
     }
 
-    public List<User> selectAll() {
-        return userMapper.selectAll();
+
+    public int insertSelective(User record) {
+        return userMapper.insertSelective(record);
     }
 
-    public boolean exist(String username) {
-        return userMapper.findOneByUsername(username) != null;
+
+    public User selectByPrimaryKey(Integer id) {
+        return userMapper.selectByPrimaryKey(id);
     }
 
     public User getUserByUsername(String username) {
         return userMapper.findOneByUsername(username);
     }
 
-    public int saveUser(User user) throws UserException {
-        log.info("go UserService");
-        return 0;
+    public boolean exist(String username) {
+        return this.getUserByUsername(username) != null;
     }
 
-    public int register(User user) throws UserException {
-        int id = this.saveUser(user);
-        applicationContext.publishEvent(new UserRegisterEvent(this, user));
-        log.info("go UserService register");
-        return id;
+    public void saveUser(User user) throws UserException {
+        log.info("go UserService's saveUser function");
+
     }
 
+    public void register(User user) throws UserException {
+        saveUser(user);
+    }
+
+    public List<User> selectAll() {
+        return userMapper.selectAll();
+    }
+
+    public int updateByPrimaryKeySelective(User record) {
+        return userMapper.updateByPrimaryKeySelective(record);
+    }
+
+
+    public int updateByPrimaryKey(User record) {
+        return userMapper.updateByPrimaryKey(record);
+    }
 
 }

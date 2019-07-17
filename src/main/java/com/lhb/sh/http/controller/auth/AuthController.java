@@ -19,14 +19,15 @@ import org.springframework.web.bind.annotation.*;
 import javax.annotation.Resource;
 import javax.validation.Valid;
 import java.util.List;
+
 import com.lhb.sh.service.auth.DbUserService;
 
 @Slf4j
 @Controller(value = "auth")
 @RequestMapping("/auth")
 public class AuthController extends BaseController {
-    @Autowired
-    DbUserService userService;
+    @Resource(name = "dbUserService")
+    UserService userService;
 
     @GetMapping("/login")
     public String loginPage(Model model) {

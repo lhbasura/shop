@@ -46,24 +46,7 @@ public class IndexController {
         return "index2";
     }
 
-    @GetMapping("/userlist")
-    public String testPage(Model model) {
-        User user = new User();
 
-        user.setUsername("lhba2sura");
-        user.setEmail("lhbasura@gmail.com");
-        user.setPassword("fjasi9ojei@fd");
-        if (!userService.exist(user.getUsername())) {
-
-            //  userService.insert(user);
-        } else {
-            log.debug("the user is exist");
-        }
-
-        List<User> userList = userService.selectAll();
-        model.addAttribute("userlist", userList);
-        return "userlist";
-    }
 
     @GetMapping("/testValid")
     @ResponseBody

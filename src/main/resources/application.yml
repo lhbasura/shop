@@ -2,9 +2,10 @@ server:
   port: 8080
   servlet:
     context-path: /
+
 mybatis:
-  mapper-locations: classpath:/mybaits/mapper/*.xml
-  config-location:  classpath:/mybatis/config/mybatis-config.xml
+  mapper-locations: classpath:mybatis/mapper/*.xml
+  config-location: classpath:mybatis/config/mybatis-config.xml
 swagger:
   title: shop
   description: api of shop

@@ -1,146 +1,146 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.lhb.sh.mapper.UserMapper">
-    <resultMap id="BaseResultMap" type="com.lhb.sh.model.User">
-        <!--@mbg.generated-->
-        <id column="id" jdbcType="INTEGER" property="id"/>
-        <result column="username" jdbcType="VARCHAR" property="username"/>
-        <result column="email" jdbcType="VARCHAR" property="email"/>
-        <result column="email_verified_at" jdbcType="TIMESTAMP" property="emailVerifiedAt"/>
-        <result column="password" jdbcType="VARCHAR" property="password"/>
-        <result column="remember_token" jdbcType="VARCHAR" property="rememberToken"/>
-        <result column="created_at" jdbcType="TIMESTAMP" property="createdAt"/>
-        <result column="updated_at" jdbcType="TIMESTAMP" property="updatedAt"/>
-    </resultMap>
-    <sql id="Base_Column_List">
-        <!--@mbg.generated-->
-        id, username, email, email_verified_at, `password`, remember_token, created_at, updated_at
-    </sql>
-    <select id="selectByPrimaryKey" parameterType="java.lang.Integer" resultMap="BaseResultMap">
-        <!--@mbg.generated-->
-        select
-        <include refid="Base_Column_List"/>
-        from user
-        where id = #{id,jdbcType=INTEGER}
-    </select>
-    <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
-        <!--@mbg.generated-->
-        delete from user
-        where id = #{id,jdbcType=INTEGER}
-    </delete>
-    <insert id="insert" keyColumn="id" keyProperty="id" parameterType="com.lhb.sh.model.User" useGeneratedKeys="true">
-        <!--@mbg.generated-->
-        insert into user (username, email, email_verified_at,
-        `password`, remember_token, created_at,
-        updated_at)
-        values (#{username,jdbcType=VARCHAR}, #{email,jdbcType=VARCHAR}, #{emailVerifiedAt,jdbcType=TIMESTAMP},
-        #{password,jdbcType=VARCHAR}, #{rememberToken,jdbcType=VARCHAR}, #{createdAt,jdbcType=TIMESTAMP},
-        #{updatedAt,jdbcType=TIMESTAMP})
-    </insert>
-    <insert id="insertSelective" keyColumn="id" keyProperty="id" parameterType="com.lhb.sh.model.User"
-            useGeneratedKeys="true">
-        <!--@mbg.generated-->
-        insert into user
-        <trim prefix="(" suffix=")" suffixOverrides=",">
-            <if test="username != null">
-                username,
-            </if>
-            <if test="email != null">
-                email,
-            </if>
-            <if test="emailVerifiedAt != null">
-                email_verified_at,
-            </if>
-            <if test="password != null">
-                `password`,
-            </if>
-            <if test="rememberToken != null">
-                remember_token,
-            </if>
-            <if test="createdAt != null">
-                created_at,
-            </if>
-            <if test="updatedAt != null">
-                updated_at,
-            </if>
-        </trim>
-        <trim prefix="values (" suffix=")" suffixOverrides=",">
-            <if test="username != null">
-                #{username,jdbcType=VARCHAR},
-            </if>
-            <if test="email != null">
-                #{email,jdbcType=VARCHAR},
-            </if>
-            <if test="emailVerifiedAt != null">
-                #{emailVerifiedAt,jdbcType=TIMESTAMP},
-            </if>
-            <if test="password != null">
-                #{password,jdbcType=VARCHAR},
-            </if>
-            <if test="rememberToken != null">
-                #{rememberToken,jdbcType=VARCHAR},
-            </if>
-            <if test="createdAt != null">
-                #{createdAt,jdbcType=TIMESTAMP},
-            </if>
-            <if test="updatedAt != null">
-                #{updatedAt,jdbcType=TIMESTAMP},
-            </if>
-        </trim>
-    </insert>
-    <update id="updateByPrimaryKeySelective" parameterType="com.lhb.sh.model.User">
-        <!--@mbg.generated-->
-        update user
-        <set>
-            <if test="username != null">
-                username = #{username,jdbcType=VARCHAR},
-            </if>
-            <if test="email != null">
-                email = #{email,jdbcType=VARCHAR},
-            </if>
-            <if test="emailVerifiedAt != null">
-                email_verified_at = #{emailVerifiedAt,jdbcType=TIMESTAMP},
-            </if>
-            <if test="password != null">
-                `password` = #{password,jdbcType=VARCHAR},
-            </if>
-            <if test="rememberToken != null">
-                remember_token = #{rememberToken,jdbcType=VARCHAR},
-            </if>
-            <if test="createdAt != null">
-                created_at = #{createdAt,jdbcType=TIMESTAMP},
-            </if>
-            <if test="updatedAt != null">
-                updated_at = #{updatedAt,jdbcType=TIMESTAMP},
-            </if>
-        </set>
-        where id = #{id,jdbcType=INTEGER}
-    </update>
-    <update id="updateByPrimaryKey" parameterType="com.lhb.sh.model.User">
-        <!--@mbg.generated-->
-        update user
-        set username = #{username,jdbcType=VARCHAR},
+  <resultMap id="BaseResultMap" type="com.lhb.sh.model.User">
+    <!--@mbg.generated-->
+    <id column="id" jdbcType="INTEGER" property="id" />
+    <result column="username" jdbcType="VARCHAR" property="username" />
+    <result column="email" jdbcType="VARCHAR" property="email" />
+    <result column="email_verified_at" jdbcType="TIMESTAMP" property="emailVerifiedAt" />
+    <result column="password" jdbcType="VARCHAR" property="password" />
+    <result column="remember_token" jdbcType="VARCHAR" property="rememberToken" />
+    <result column="created_at" jdbcType="TIMESTAMP" property="createdAt" />
+    <result column="updated_at" jdbcType="TIMESTAMP" property="updatedAt" />
+  </resultMap>
+  <sql id="Base_Column_List">
+    <!--@mbg.generated-->
+    id, username, email, email_verified_at, `password`, remember_token, created_at, updated_at
+  </sql>
+  <select id="selectByPrimaryKey" parameterType="java.lang.Integer" resultMap="BaseResultMap">
+    <!--@mbg.generated-->
+    select 
+    <include refid="Base_Column_List" />
+    from user
+    where id = #{id,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
+    <!--@mbg.generated-->
+    delete from user
+    where id = #{id,jdbcType=INTEGER}
+  </delete>
+  <insert id="insert" keyColumn="id" keyProperty="id" parameterType="com.lhb.sh.model.User" useGeneratedKeys="true">
+    <!--@mbg.generated-->
+    insert into user (username, email, email_verified_at, 
+      `password`, remember_token, created_at, 
+      updated_at)
+    values (#{username,jdbcType=VARCHAR}, #{email,jdbcType=VARCHAR}, #{emailVerifiedAt,jdbcType=TIMESTAMP}, 
+      #{password,jdbcType=VARCHAR}, #{rememberToken,jdbcType=VARCHAR}, #{createdAt,jdbcType=TIMESTAMP}, 
+      #{updatedAt,jdbcType=TIMESTAMP})
+  </insert>
+  <insert id="insertSelective" keyColumn="id" keyProperty="id" parameterType="com.lhb.sh.model.User" useGeneratedKeys="true">
+    <!--@mbg.generated-->
+    insert into user
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="username != null">
+        username,
+      </if>
+      <if test="email != null">
+        email,
+      </if>
+      <if test="emailVerifiedAt != null">
+        email_verified_at,
+      </if>
+      <if test="password != null">
+        `password`,
+      </if>
+      <if test="rememberToken != null">
+        remember_token,
+      </if>
+      <if test="createdAt != null">
+        created_at,
+      </if>
+      <if test="updatedAt != null">
+        updated_at,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="username != null">
+        #{username,jdbcType=VARCHAR},
+      </if>
+      <if test="email != null">
+        #{email,jdbcType=VARCHAR},
+      </if>
+      <if test="emailVerifiedAt != null">
+        #{emailVerifiedAt,jdbcType=TIMESTAMP},
+      </if>
+      <if test="password != null">
+        #{password,jdbcType=VARCHAR},
+      </if>
+      <if test="rememberToken != null">
+        #{rememberToken,jdbcType=VARCHAR},
+      </if>
+      <if test="createdAt != null">
+        #{createdAt,jdbcType=TIMESTAMP},
+      </if>
+      <if test="updatedAt != null">
+        #{updatedAt,jdbcType=TIMESTAMP},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.lhb.sh.model.User">
+    <!--@mbg.generated-->
+    update user
+    <set>
+      <if test="username != null">
+        username = #{username,jdbcType=VARCHAR},
+      </if>
+      <if test="email != null">
         email = #{email,jdbcType=VARCHAR},
+      </if>
+      <if test="emailVerifiedAt != null">
         email_verified_at = #{emailVerifiedAt,jdbcType=TIMESTAMP},
+      </if>
+      <if test="password != null">
         `password` = #{password,jdbcType=VARCHAR},
+      </if>
+      <if test="rememberToken != null">
         remember_token = #{rememberToken,jdbcType=VARCHAR},
+      </if>
+      <if test="createdAt != null">
         created_at = #{createdAt,jdbcType=TIMESTAMP},
-        updated_at = #{updatedAt,jdbcType=TIMESTAMP}
-        where id = #{id,jdbcType=INTEGER}
-    </update>
+      </if>
+      <if test="updatedAt != null">
+        updated_at = #{updatedAt,jdbcType=TIMESTAMP},
+      </if>
+    </set>
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.lhb.sh.model.User">
+    <!--@mbg.generated-->
+    update user
+    set username = #{username,jdbcType=VARCHAR},
+      email = #{email,jdbcType=VARCHAR},
+      email_verified_at = #{emailVerifiedAt,jdbcType=TIMESTAMP},
+      `password` = #{password,jdbcType=VARCHAR},
+      remember_token = #{rememberToken,jdbcType=VARCHAR},
+      created_at = #{createdAt,jdbcType=TIMESTAMP},
+      updated_at = #{updatedAt,jdbcType=TIMESTAMP}
+    where id = #{id,jdbcType=INTEGER}
+  </update>
 
-    <!--auto generated by MybatisCodeHelper on 2019-06-24-->
-    <select id="findOneByUsername" resultMap="BaseResultMap">
-        select
-        <include refid="Base_Column_List"/>
-        from user
-        where username=#{username,jdbcType=VARCHAR}
-    </select>
+<!--auto generated by MybatisCodeHelper on 2019-07-17-->
+  <select id="findOneByUsername" resultMap="BaseResultMap">
+    select
+    <include refid="Base_Column_List"/>
+    from user
+    where username=#{username,jdbcType=VARCHAR}
+  </select>
 
-    <!--auto generated by MybatisCodeHelper on 2019-06-24-->
-    <select id="selectAll" resultMap="BaseResultMap">
-        select
-        <include refid="Base_Column_List"/>
-        from user
-    </select>
+<!--auto generated by MybatisCodeHelper on 2019-07-17-->
+  <select id="selectAll" resultMap="BaseResultMap">
+    select
+    <include refid="Base_Column_List"/>
+    from user
+  </select>
+
 </mapper>

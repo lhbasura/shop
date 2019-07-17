@@ -9,37 +9,34 @@ import com.lhb.sh.model.User;
 import com.lhb.sh.service.user.UserService;
 import com.lhb.sh.util.Security;
 import com.lhb.sh.util.enums.AccountStaEnum;
-import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.context.ApplicationContext;
+
 import org.springframework.security.core.authority.SimpleGrantedAuthority;
-import org.springframework.security.core.parameters.P;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.stereotype.Service;
 
-import javax.annotation.Resource;
+
 import java.util.ArrayList;
 import java.util.List;
 
 @Slf4j
-@Service
+@Service("dbUserService")
 public class DbUserService extends UserService implements UserDetailsService {
 
 
-    @Resource
-    public void setUserMapper(UserMapper userMapper)
-    {
-        super.userMapper=userMapper;
-    }
-    @Resource
-    public void setApplicationContext(ApplicationContext applicationContext)
-    {
-        super.applicationContext=applicationContext;
-    }
+//    @Resource
+//    public void setUserMapper(UserMapper userMapper)
+//    {
+//        super.userMapper=userMapper;
+//    }
+//    @Resource
+//    public void setApplicationContext(ApplicationContext applicationContext)
+//    {
+//        super.applicationContext=applicationContext;
+//    }
 
     @Override
     public UserDetails loadUserByUsername(String username) throws UsernameNotFoundException {
@@ -53,7 +50,7 @@ public class DbUserService extends UserService implements UserDetailsService {
     }
 
     @Override
-    public int saveUser(User user) throws UserException {
+    public void saveUser(User user) throws UserException {
         if (user.getUsername() == null) {
             throw new NullValueException(AccountStaEnum.nameNull);
         }
@@ -66,7 +63,7 @@ public class DbUserService extends UserService implements UserDetailsService {
         }
         user.setPassword(Security.encode(user.getUsername(), user.getPassword()));
         log.info("go dbUserService saveUser");
-        return this.insert(user);
+        this.insert(user);
     }
 
 }
