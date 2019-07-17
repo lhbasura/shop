@@ -1,10 +1,8 @@
 package com.lhb.sh.provider.auth;
 
-import com.lhb.sh.service.auth.DbUserDetailsService;
+import com.lhb.sh.service.auth.DbUserService;
 import com.lhb.sh.util.Security;
 import lombok.extern.slf4j.Slf4j;
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.authentication.AuthenticationProvider;
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
@@ -19,7 +17,7 @@ public class CustomerAuthenticationProvider implements AuthenticationProvider {
 
 
     @Autowired
-    DbUserDetailsService userDetailsService;
+    DbUserService userDetailsService;
 
     @Override
     public Authentication authenticate(Authentication authentication) throws AuthenticationException {

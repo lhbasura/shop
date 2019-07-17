@@ -1,7 +1,7 @@
-package com.lhb.sh.controller.user;
+package com.lhb.sh.http.controller.user;
 
 
-import com.lhb.sh.controller.BaseController;
+import com.lhb.sh.http.controller.BaseController;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Controller;
 

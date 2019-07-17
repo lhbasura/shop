@@ -1,4 +1,4 @@
-package com.lhb.sh.interceptor;
+package com.lhb.sh.http.interceptor;
 
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.web.servlet.HandlerInterceptor;

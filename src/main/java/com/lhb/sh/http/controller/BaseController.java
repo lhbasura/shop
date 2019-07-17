@@ -1,4 +1,4 @@
-package com.lhb.sh.controller;
+package com.lhb.sh.http.controller;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;

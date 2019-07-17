@@ -15,6 +15,18 @@ swagger:
 spring:
   profiles:
     active: local
+  mail:
+    host: smtp.qq.com
+    username: xxx@xxx.com
+    password: xxxxxx
+    properties:
+      mail:
+        smtp:
+          auth: true
+          starttls:
+            enable: true
+            required: true
+    default-encoding: utf-8
   thymeleaf:
     cache: false
   datasource:

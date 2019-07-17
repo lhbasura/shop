@@ -1,6 +1,6 @@
 package com.lhb.sh.config;
 
-import com.lhb.sh.interceptor.UserInterceptor;
+import com.lhb.sh.http.interceptor.UserInterceptor;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.web.servlet.config.annotation.InterceptorRegistry;
 import org.springframework.web.servlet.config.annotation.ResourceHandlerRegistry;

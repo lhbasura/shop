@@ -1,4 +1,4 @@
-package com.lhb.sh.controller;
+package com.lhb.sh.http.controller;
 
 import com.lhb.sh.model.User;
 import com.lhb.sh.service.user.UserService;
