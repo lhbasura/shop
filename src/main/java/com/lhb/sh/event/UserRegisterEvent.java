@@ -1,10 +1,14 @@
 package com.lhb.sh.event;
 
 import com.lhb.sh.model.User;
+import lombok.Getter;
+import lombok.Setter;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.context.ApplicationEvent;
 
 @Slf4j
+@Getter
+@Setter
 public class UserRegisterEvent extends ApplicationEvent {
     /**
      * Create a new ApplicationEvent.
@@ -16,6 +20,6 @@ public class UserRegisterEvent extends ApplicationEvent {
         super(source);
 
         log.info("UserRegisterEvent is triggered,the user is: "+user.toString());
-        this.user=user;
+        this.setUser(user);
     }
 }
