@@ -24,8 +24,6 @@ public class UserController extends BaseController {
     @Resource
     UserService userService;
 
-
-
     @GetMapping("/userlist")
     public String users(Model model) {
         List<User>userList =userService.selectAll();

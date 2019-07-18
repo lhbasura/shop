@@ -1,5 +1,6 @@
 package com.lhb.sh.service.user;
 
+import com.lhb.sh.event.UserRegisterEvent;
 import com.lhb.sh.exception.user.UserException;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.context.ApplicationContext;
@@ -56,6 +57,7 @@ public class UserService {
 
     public void register(User user) throws UserException {
         saveUser(user);
+        applicationContext.publishEvent(new UserRegisterEvent(this,user));
     }
 
     public List<User> selectAll() {
