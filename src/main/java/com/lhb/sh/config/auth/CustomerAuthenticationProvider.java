@@ -1,4 +1,4 @@
-package com.lhb.sh.provider.auth;
+package com.lhb.sh.config.auth;
 
 import com.lhb.sh.service.auth.DbUserService;
 import com.lhb.sh.util.Security;
@@ -14,7 +14,6 @@ import org.springframework.stereotype.Component;
 @Slf4j
 @Component
 public class CustomerAuthenticationProvider implements AuthenticationProvider {
-
 
     @Autowired
     DbUserService userDetailsService;

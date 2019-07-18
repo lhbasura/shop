@@ -1,6 +1,5 @@
-package com.lhb.sh.config;
+package com.lhb.sh.config.auth;
 
-import com.lhb.sh.provider.auth.CustomerAuthenticationProvider;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Configuration;

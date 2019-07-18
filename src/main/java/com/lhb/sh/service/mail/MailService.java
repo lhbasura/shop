@@ -7,7 +7,11 @@ import org.springframework.mail.SimpleMailMessage;
 import org.springframework.mail.javamail.JavaMailSender;
 import org.springframework.mail.javamail.MimeMessageHelper;
 import org.springframework.stereotype.Component;
+import org.thymeleaf.TemplateEngine;
+import org.thymeleaf.context.Context;
 
+import javax.annotation.Resource;
+import javax.mail.MessagingException;
 import javax.mail.internet.MimeMessage;
 
 /**
@@ -16,18 +20,31 @@ import javax.mail.internet.MimeMessage;
 @Component
 public class MailService  {
 
-    @Autowired
+    @Resource
     private JavaMailSender mailSender;
 
     @Value("${spring.mail.username}")
     private String from;
 
-    public void sendSimpleMail(String to, String subject, String content) {
-        SimpleMailMessage message = new SimpleMailMessage();
-        message.setFrom(from); // 邮件发送者
-        message.setTo(to); // 邮件接受者
-        message.setSubject(subject); // 主题
-        message.setText(content); // 内容
+    @Resource
+    TemplateEngine templateEngine;
+
+    private final String verifyPath="auth/verify";
+    private final String verifySubject="激活您的账户";
+    public void sendVerifyMail(String to) throws MessagingException {
+
+        Context context = new Context();
+        context.setVariable("id", "006");
+        String emailContent = templateEngine.process(verifyPath, context);
+        this.sendMail(to,verifySubject,emailContent);
+    }
+    public void sendMail(String to, String subject, String content) throws MessagingException {
+        MimeMessage message = mailSender.createMimeMessage();
+        MimeMessageHelper helper = new MimeMessageHelper(message, true);
+        helper.setFrom(from);
+        helper.setTo(to);
+        helper.setSubject(subject);
+        helper.setText(content, true);
         mailSender.send(message);
     }
 
