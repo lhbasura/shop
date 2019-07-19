@@ -1,9 +1,10 @@
 package com.lhb.sh.service.mail;
 
 
-import org.springframework.beans.factory.annotation.Autowired;
+import lombok.extern.slf4j.Slf4j;
+
 import org.springframework.beans.factory.annotation.Value;
-import org.springframework.mail.SimpleMailMessage;
+
 import org.springframework.mail.javamail.JavaMailSender;
 import org.springframework.mail.javamail.MimeMessageHelper;
 import org.springframework.stereotype.Component;
@@ -17,6 +18,7 @@ import javax.mail.internet.MimeMessage;
 /**
  * MailService实现类
  */
+@Slf4j
 @Component
 public class MailService  {
 
@@ -32,9 +34,8 @@ public class MailService  {
     private final String verifyPath="auth/verify";
     private final String verifySubject="激活您的账户";
     public void sendVerifyMail(String to) throws MessagingException {
-
         Context context = new Context();
-        context.setVariable("id", "006");
+        //context.setVariable("id", "006");
         String emailContent = templateEngine.process(verifyPath, context);
         this.sendMail(to,verifySubject,emailContent);
     }
@@ -45,6 +46,7 @@ public class MailService  {
         helper.setTo(to);
         helper.setSubject(subject);
         helper.setText(content, true);
+        log.info("content:"+content);
         mailSender.send(message);
     }
 

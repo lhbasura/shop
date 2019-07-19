@@ -29,9 +29,8 @@ public class IndexController {
     }
 
     @GetMapping("test")
-    @ResponseBody
     public String test(){
-        return "this  a page";
+        return "test";
     }
 
     @GetMapping(value = "/username")
@@ -40,11 +39,6 @@ public class IndexController {
         return principal.getName();
     }
 
-    @RequestMapping("/index2")
-    public String index2Page(ModelMap modelMap) {
-
-        return "index2";
-    }
 
 
 
