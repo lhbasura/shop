@@ -3,9 +3,11 @@ package com.lhb.sh.util;
 
 import com.google.gson.Gson;
 import com.lhb.sh.util.enums.AccountStaEnum;
+import org.springframework.validation.ObjectError;
 
 import javax.servlet.http.HttpServletRequest;
 import java.util.LinkedHashMap;
+import java.util.List;
 import java.util.Map;
 
 /**
@@ -16,7 +18,8 @@ import java.util.Map;
  * @version: [1.0]
  */
 public class ResultUtil {
-    private static Map<String, Object> resultMap = new LinkedHashMap<String, Object>();
+
+    private static volatile Map<String, Object> resultMap = new LinkedHashMap<String, Object>();
 
     public ResultUtil() {
     }
@@ -92,17 +95,6 @@ public class ResultUtil {
         return toJson(resultMap);
     }
 
-    /**
-     * @param code
-     * @Title: getJson
-     * @Description: int -> Map("message",Object) -> json
-     * @return: String(json)
-     */
-    public static String getJson(int code) {
-        resultMap.clear();
-        resultMap.put("code", code);
-        return toJson(resultMap);
-    }
 
     /**
      * @param request
@@ -124,5 +116,14 @@ public class ResultUtil {
      */
     public static String toJson(Object object) {
         return new Gson().toJson(object);
+    }
+
+    public static String toJson(List<ObjectError>errors)
+    {
+        StringBuilder str=new StringBuilder();
+        errors.forEach(error->{
+            str.append(error.getDefaultMessage());
+        });
+        return str.toString();
     }
 }

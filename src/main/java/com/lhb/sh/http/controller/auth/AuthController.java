@@ -24,7 +24,6 @@ import com.lhb.sh.service.auth.DbUserService;
 
 @Slf4j
 @Controller(value = "auth")
-@RequestMapping("/auth")
 public class AuthController extends BaseController {
     @Resource(name = "dbUserService")
     UserService userService;
@@ -44,10 +43,12 @@ public class AuthController extends BaseController {
     @PostMapping("/register")
     @ResponseBody
     public String register(@Valid User user, BindingResult bindingResult) {
-//        if (bindingResult.hasErrors()) {
-//            List<ObjectError> errors = bindingResult.getAllErrors();
-//            return ResultUtil.toJson(errors);
-//        }
+        log.info("register user is:",user.toString());
+        if (bindingResult.hasErrors()) {
+            log.info("regiseter data has illegal item");
+            List<ObjectError> errors = bindingResult.getAllErrors();
+            return ResultUtil.toJson(errors);
+        }
         try {
             userService.register(user);
             return ResultUtil.getJson(AccountStaEnum.success.getCode(), AccountStaEnum.success.getInfo());

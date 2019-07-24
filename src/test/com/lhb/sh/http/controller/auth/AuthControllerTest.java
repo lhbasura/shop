@@ -19,9 +19,9 @@ public class AuthControllerTest extends ShopApplicationTest {
     public void register() throws UserException {
         User user=new User();
         RandomString randomString=new RandomString(8);
-        user.setUsername(randomString.nextString());
-        user.setEmail(randomString.nextString()+"@qq.com");
-        user.setPassword(randomString.nextString());
+        user.setUsername("lhbasura");
+        user.setEmail("hongbo.liu@geneegroup.com");
+        user.setPassword("root");
         userService.register(user);
     }
 }
