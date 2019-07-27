@@ -18,63 +18,11 @@ import java.util.Map;
  * @version: [1.0]
  */
 public class ResultUtil {
-
-    private static volatile Map<String, Object> resultMap = new LinkedHashMap<String, Object>();
-
-    public ResultUtil() {
-    }
-
-    /**
-     * @param object
-     * @Title: putLinkedMap
-     * @Description: Message 消息结果
-     * @return: Map<String, Object>
-     */
-    public static Map<String, Object> putMessageMap(Object object) {
-        resultMap.put("Message", object);
+    private static Map getInstance()
+    {
+        Map<String, Object> resultMap = new LinkedHashMap<String, Object>();
         return resultMap;
     }
-
-    /**
-     * @param object
-     * @Title: putLinkedMap
-     * @Description: code 消息状态
-     * @return: Map<String, Object>
-     */
-    public static Map<String, Object> putcodeMap(Object object) {
-        resultMap.put("code", object);
-        return resultMap;
-    }
-
-    /**
-     * @param object
-     * @Title: putLinkedMap
-     * @Description: Url 请求地址
-     * @return: Map<String, Object>
-     */
-    public static Map<String, Object> putUrlMap(Object object) {
-        resultMap.put("Url", object);
-        return resultMap;
-    }
-
-    /**
-     * @Title: clearMap
-     * @Description: 清空消息集
-     * @return: void
-     */
-    public static void clearMap() {
-        resultMap.clear();
-    }
-
-    /**
-     * @Title: getLinkedMap
-     * @Description: 返回消息集
-     * @return: Map<String, Object>
-     */
-    public static Map<String, Object> getLinkedMap() {
-        return resultMap;
-    }
-
     /**
      * @param message
      * @return
@@ -83,30 +31,21 @@ public class ResultUtil {
      * @return: String(json)
      */
     public static String getJson(String message) {
+        Map<String,Object> resultMap=getInstance();
         resultMap.clear();
         resultMap.put("message", message);
         return toJson(resultMap);
     }
 
     public static String getJson(int code, String message) {
-        resultMap.clear();
+        Map<String,Object> resultMap=getInstance();
         resultMap.put("code", code);
         resultMap.put("message", message);
         return toJson(resultMap);
     }
 
 
-    /**
-     * @param request
-     * @Title: getUrlJson
-     * @Description: after login success,return the url(json)
-     * @return: String
-     */
-    public static String getUrlJson(HttpServletRequest request) {
-        resultMap.clear();
-        resultMap.put("code", AccountStaEnum.success.getCode());
-        return toJson(resultMap);
-    }
+
 
     /**
      * @param object

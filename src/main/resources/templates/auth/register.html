@@ -6,7 +6,7 @@
     <!-- contact -->
     <div class="login">
         <div class="container">
-            <form th:action="@{/register}" id="reg_form" method="post">
+            <form action="/register" id="reg_form" method="post">
                 <div class="col-md-6 login-do1 animated wow fadeInLeft" data-wow-delay=".5s">
 
                     <div class="login-mail">
@@ -36,7 +36,7 @@
                         <input type="submit" value="Submit">
                     </label>
                     <p>Already register</p>
-                    <a th:href="@{/login}" class="hvr-sweep-to-top">Login</a>
+                    <a href="/login" class="hvr-sweep-to-top">Login</a>
                 </div>
                 <div class="clearfix"></div>
             </form>

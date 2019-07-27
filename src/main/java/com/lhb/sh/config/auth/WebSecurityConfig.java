@@ -8,6 +8,8 @@ import org.springframework.security.config.annotation.web.builders.HttpSecurity;
 import org.springframework.security.config.annotation.web.configuration.EnableWebSecurity;
 import org.springframework.security.config.annotation.web.configuration.WebSecurityConfigurerAdapter;
 import org.springframework.security.core.Authentication;
+import org.springframework.security.core.context.SecurityContextHolder;
+import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.web.authentication.AuthenticationSuccessHandler;
 
 import javax.servlet.ServletException;
@@ -28,20 +30,23 @@ class WebSecurityConfig extends WebSecurityConfigurerAdapter {
 
     @Override
     protected void configure(HttpSecurity http) throws Exception {
+        log.info("config springsecurity");
         http.authorizeRequests()
                 .antMatchers("/css/*", "/js/*", "/fonts/*", "/images/*").permitAll()
-                .antMatchers("/register", "/login", "/index").permitAll()
+                .antMatchers("/register", "/login","/", "/index").anonymous()
                 .anyRequest().authenticated()
                 .and()
-                .formLogin().loginPage("/login").successHandler(new AuthenticationSuccessHandler() {
-            @Override
-            public void onAuthenticationSuccess(HttpServletRequest request, HttpServletResponse response, Authentication authentication) throws IOException, ServletException {
-
-            }
-        })
-                .defaultSuccessUrl("/home")
+                .formLogin().loginPage("/login")
+                .successHandler((request, response, authentication) -> {
+                    UserDetails userDetails = (UserDetails) SecurityContextHolder.getContext()
+                            .getAuthentication()
+                            .getPrincipal();
+                    log.info("the user is login:" + userDetails.toString());
+                    response.sendRedirect("/home");
+                })
+                // .defaultSuccessUrl("/home");
                 .and()
-                .logout().logoutUrl("/logout").logoutSuccessUrl("/login");
+                .logout().logoutUrl("/logout").logoutSuccessUrl("/");
     }
 
     @Override

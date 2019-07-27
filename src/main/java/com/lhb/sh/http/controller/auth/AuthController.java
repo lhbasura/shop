@@ -31,13 +31,13 @@ public class AuthController extends BaseController {
     @GetMapping("/login")
     public String loginPage(Model model) {
         log.info("you can go the loginPage");
-        return "/auth/login";
+        return "auth/login";
     }
 
     @GetMapping("/register")
     public String regPage() {
         log.info("you can go the regPage");
-        return "/auth/register";
+        return "auth/register";
     }
 
     @PostMapping("/register")
