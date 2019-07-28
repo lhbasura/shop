@@ -33,7 +33,7 @@ class WebSecurityConfig extends WebSecurityConfigurerAdapter {
         log.info("config springsecurity");
         http.authorizeRequests()
                 .antMatchers("/css/*", "/js/*", "/fonts/*", "/images/*").permitAll()
-                .antMatchers("/register", "/login","/", "/index").anonymous()
+                .antMatchers("/register", "/login","/", "/index").permitAll()
                 .anyRequest().authenticated()
                 .and()
                 .formLogin().loginPage("/login")
