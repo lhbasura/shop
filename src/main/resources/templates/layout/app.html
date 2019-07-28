@@ -1,9 +1,15 @@
 <!DOCTYPE html>
 <html xmlns:th="http://www.thymeleaf.org"
+      xmlns:sec="http://www.thymeleaf.org/extras/spring-security"
       xmlns:layout="http://www.ultraq.net.nz/web/thymeleaf/layout">
     <head>
         <title>Home</title>
         <!-- for-mobile-apps -->
+        <!-- CSRF -->
+        <meta name="_csrf" th:content="${_csrf.token}"/>
+        <!-- default header name is X-CSRF-TOKEN -->
+        <meta name="_csrf_header" th:content="${_csrf.headerName}"/>
+
         <meta name="viewport" content="width=device-width, initial-scale=1">
         <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
         <meta name="keywords" content="Classic Style Responsive web template, Bootstrap Web Templates, Flat Web Templates, Android Compatible web template,
@@ -22,6 +28,7 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
         <link th:href="@{css/style.css}" rel="stylesheet" type="text/css" media="all"/>
         <!-- js -->
         <script th:src="@{js/jquery.min.js}"></script>
+        <script th:src="@{js/jquery.form.js}"></script>
         <!-- //js -->
         <!-- cart -->
         <script th:src="@{js/simpleCart.min.js}"></script>
@@ -43,12 +50,13 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
     <body>
         <div id="app" class="{{ route_class() }}-page">
             <!-- //header -->
-            <div th:insert="/layout/__header"></div>
+            <div th:insert="~{layout/__header}"></div>
 
             <div layout:fragment="content" id="content" ></div>
             <!-- footer -->
-            <div th:insert="/layout/__footer"></div>
+            <div th:insert="~{layout/__footer}"></div>
             <!-- //footer -->
         </div>
     </body>
+    <script layout:fragment="after_script" ></script>
 </html>

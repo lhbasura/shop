@@ -1,12 +1,16 @@
 <!DOCTYPE html>
 <html xmlns:th="http://www.thymeleaf.org"
       xmlns:layout="http://www.ultraq.net.nz/web/thymeleaf/layout"
-      layout:decorate="/layout/app">
+      layout:decorate="~{layout/app}">
+
 <section layout:fragment="content">
     <!-- contact -->
     <div class="login">
         <div class="container">
             <form action="/register" id="reg_form" method="post">
+                <input type="hidden"
+                       th:name="${_csrf.parameterName}"
+                       th:value="${_csrf.token}"/>
                 <div class="col-md-6 login-do1 animated wow fadeInLeft" data-wow-delay=".5s">
 
                     <div class="login-mail">
@@ -41,8 +45,6 @@
                 <div class="clearfix"></div>
             </form>
         </div>
-
-
     </div>
     <div class="social animated wow fadeInUp" data-wow-delay=".1s">
         <div class="container">
@@ -62,7 +64,7 @@
         </div>
     </div>
 </section>
-<script>
+<script layout:fragment="after_script">
     $(function () {
         var $password = $('input[name=password]')
         var $confirm = $('input[name=confirm]')
@@ -71,7 +73,7 @@
                 console.log(response)
                 if (response.code == 200) {
                     console.log('注册成功')
-                    location.href='/home'
+                    location.href = '/home'
                 } else {
                     console.log(response)
                 }
@@ -92,7 +94,6 @@
                 $(this).get(0).setCustomValidity('')
             }
         })
-        console.log('go there')
         $('#reg_form').ajaxForm(options);
     })
 </script>
