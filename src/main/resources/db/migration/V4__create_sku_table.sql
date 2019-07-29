@@ -1,4 +1,4 @@
-CREATE TABLE product_sku
+CREATE TABLE sku
 (
   id          INT(10) UNSIGNED                        NOT NULL AUTO_INCREMENT,
   title       VARCHAR(255) COLLATE utf8mb4_unicode_ci NOT NULL,
@@ -9,8 +9,8 @@ CREATE TABLE product_sku
   created_at  TIMESTAMP                               NULL DEFAULT NULL,
   updated_at  TIMESTAMP                               NULL DEFAULT NULL,
   PRIMARY KEY (id),
-  KEY product_sku_product_id_foreign (product_id),
-  CONSTRAINT product_sku_product_id_foreign FOREIGN KEY (product_id) REFERENCES product (id) ON DELETE CASCADE
+  KEY sku_product_id_foreign (product_id),
+  CONSTRAINT sku_product_id_foreign FOREIGN KEY (product_id) REFERENCES product (id) ON DELETE CASCADE
 ) ENGINE = InnoDB
   AUTO_INCREMENT = 93
   DEFAULT CHARSET = utf8mb4
