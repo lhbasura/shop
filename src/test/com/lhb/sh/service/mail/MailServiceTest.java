@@ -6,10 +6,11 @@ import org.junit.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 
 import javax.mail.MessagingException;
+import java.util.LinkedList;
 
 
 @Slf4j
-public class MailServiceTest extends ShopApplicationTest {
+public class MailServiceTest  {
 
     @Autowired
     MailService service;
@@ -25,4 +26,13 @@ public class MailServiceTest extends ShopApplicationTest {
 
         log.info("send email end");
     }
+    public void reverseList(LinkedList node)
+    {
+    }
+    @Test
+    public void test()
+    {
+        System.out.println("test");
+    }
+
 }
