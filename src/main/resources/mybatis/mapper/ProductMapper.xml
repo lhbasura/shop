@@ -1,168 +1,166 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.lhb.sh.mapper.ProductMapper">
-    <resultMap id="BaseResultMap" type="com.lhb.sh.model.Product">
-        <!--@mbg.generated-->
-        <id column="id" jdbcType="INTEGER" property="id"/>
-        <result column="title" jdbcType="VARCHAR" property="title"/>
-        <result column="description" jdbcType="VARCHAR" property="description"/>
-        <result column="image" jdbcType="VARCHAR" property="image"/>
-        <result column="on_sale" jdbcType="BOOLEAN" property="onSale"/>
-        <result column="rating" jdbcType="DOUBLE" property="rating"/>
-        <result column="sold_count" jdbcType="INTEGER" property="soldCount"/>
-        <result column="review_count" jdbcType="INTEGER" property="reviewCount"/>
-        <result column="price" jdbcType="DECIMAL" property="price"/>
-        <result column="created_at" jdbcType="TIMESTAMP" property="createdAt"/>
-        <result column="updated_at" jdbcType="TIMESTAMP" property="updatedAt"/>
-    </resultMap>
-    <sql id="Base_Column_List">
-        <!--@mbg.generated-->
-        id, title, description, image, on_sale, rating, sold_count, review_count, price,
-        created_at, updated_at
-    </sql>
-    <select id="selectByPrimaryKey" parameterType="java.lang.Integer" resultMap="BaseResultMap">
-        <!--@mbg.generated-->
-        select
-        <include refid="Base_Column_List"/>
-        from product
-        where id = #{id,jdbcType=INTEGER}
-    </select>
-    <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
-        <!--@mbg.generated-->
-        delete from product
-        where id = #{id,jdbcType=INTEGER}
-    </delete>
-    <insert id="insert" keyColumn="id" keyProperty="id" parameterType="com.lhb.sh.model.Product"
-            useGeneratedKeys="true">
-        <!--@mbg.generated-->
-        insert into product (title, description, image,
-        on_sale, rating, sold_count,
-        review_count, price, created_at,
-        updated_at)
-        values (#{title,jdbcType=VARCHAR}, #{description,jdbcType=VARCHAR}, #{image,jdbcType=VARCHAR},
-        #{onSale,jdbcType=BOOLEAN}, #{rating,jdbcType=DOUBLE}, #{soldCount,jdbcType=INTEGER},
-        #{reviewCount,jdbcType=INTEGER}, #{price,jdbcType=DECIMAL}, #{createdAt,jdbcType=TIMESTAMP},
-        #{updatedAt,jdbcType=TIMESTAMP})
-    </insert>
-    <insert id="insertSelective" keyColumn="id" keyProperty="id" parameterType="com.lhb.sh.model.Product"
-            useGeneratedKeys="true">
-        <!--@mbg.generated-->
-        insert into product
-        <trim prefix="(" suffix=")" suffixOverrides=",">
-            <if test="title != null">
-                title,
-            </if>
-            <if test="description != null">
-                description,
-            </if>
-            <if test="image != null">
-                image,
-            </if>
-            <if test="onSale != null">
-                on_sale,
-            </if>
-            <if test="rating != null">
-                rating,
-            </if>
-            <if test="soldCount != null">
-                sold_count,
-            </if>
-            <if test="reviewCount != null">
-                review_count,
-            </if>
-            <if test="price != null">
-                price,
-            </if>
-            <if test="createdAt != null">
-                created_at,
-            </if>
-            <if test="updatedAt != null">
-                updated_at,
-            </if>
-        </trim>
-        <trim prefix="values (" suffix=")" suffixOverrides=",">
-            <if test="title != null">
-                #{title,jdbcType=VARCHAR},
-            </if>
-            <if test="description != null">
-                #{description,jdbcType=VARCHAR},
-            </if>
-            <if test="image != null">
-                #{image,jdbcType=VARCHAR},
-            </if>
-            <if test="onSale != null">
-                #{onSale,jdbcType=BOOLEAN},
-            </if>
-            <if test="rating != null">
-                #{rating,jdbcType=DOUBLE},
-            </if>
-            <if test="soldCount != null">
-                #{soldCount,jdbcType=INTEGER},
-            </if>
-            <if test="reviewCount != null">
-                #{reviewCount,jdbcType=INTEGER},
-            </if>
-            <if test="price != null">
-                #{price,jdbcType=DECIMAL},
-            </if>
-            <if test="createdAt != null">
-                #{createdAt,jdbcType=TIMESTAMP},
-            </if>
-            <if test="updatedAt != null">
-                #{updatedAt,jdbcType=TIMESTAMP},
-            </if>
-        </trim>
-    </insert>
-    <update id="updateByPrimaryKeySelective" parameterType="com.lhb.sh.model.Product">
-        <!--@mbg.generated-->
-        update product
-        <set>
-            <if test="title != null">
-                title = #{title,jdbcType=VARCHAR},
-            </if>
-            <if test="description != null">
-                description = #{description,jdbcType=VARCHAR},
-            </if>
-            <if test="image != null">
-                image = #{image,jdbcType=VARCHAR},
-            </if>
-            <if test="onSale != null">
-                on_sale = #{onSale,jdbcType=BOOLEAN},
-            </if>
-            <if test="rating != null">
-                rating = #{rating,jdbcType=DOUBLE},
-            </if>
-            <if test="soldCount != null">
-                sold_count = #{soldCount,jdbcType=INTEGER},
-            </if>
-            <if test="reviewCount != null">
-                review_count = #{reviewCount,jdbcType=INTEGER},
-            </if>
-            <if test="price != null">
-                price = #{price,jdbcType=DECIMAL},
-            </if>
-            <if test="createdAt != null">
-                created_at = #{createdAt,jdbcType=TIMESTAMP},
-            </if>
-            <if test="updatedAt != null">
-                updated_at = #{updatedAt,jdbcType=TIMESTAMP},
-            </if>
-        </set>
-        where id = #{id,jdbcType=INTEGER}
-    </update>
-    <update id="updateByPrimaryKey" parameterType="com.lhb.sh.model.Product">
-        <!--@mbg.generated-->
-        update product
-        set title = #{title,jdbcType=VARCHAR},
-        description = #{description,jdbcType=VARCHAR},
+  <resultMap id="BaseResultMap" type="com.lhb.sh.model.Product">
+    <!--@mbg.generated-->
+    <id column="id" jdbcType="INTEGER" property="id" />
+    <result column="title" jdbcType="VARCHAR" property="title" />
+    <result column="description" jdbcType="LONGVARCHAR" property="description" />
+    <result column="image" jdbcType="VARCHAR" property="image" />
+    <result column="on_sale" jdbcType="BOOLEAN" property="onSale" />
+    <result column="rating" jdbcType="DOUBLE" property="rating" />
+    <result column="sold_count" jdbcType="INTEGER" property="soldCount" />
+    <result column="review_count" jdbcType="INTEGER" property="reviewCount" />
+    <result column="price" jdbcType="DECIMAL" property="price" />
+    <result column="created_at" jdbcType="TIMESTAMP" property="createdAt" />
+    <result column="updated_at" jdbcType="TIMESTAMP" property="updatedAt" />
+  </resultMap>
+  <sql id="Base_Column_List">
+    <!--@mbg.generated-->
+    id, title, description, image, on_sale, rating, sold_count, review_count, price, 
+    created_at, updated_at
+  </sql>
+  <select id="selectByPrimaryKey" parameterType="java.lang.Integer" resultMap="BaseResultMap">
+    <!--@mbg.generated-->
+    select 
+    <include refid="Base_Column_List" />
+    from product
+    where id = #{id,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
+    <!--@mbg.generated-->
+    delete from product
+    where id = #{id,jdbcType=INTEGER}
+  </delete>
+  <insert id="insert" keyColumn="id" keyProperty="id" parameterType="com.lhb.sh.model.Product" useGeneratedKeys="true">
+    <!--@mbg.generated-->
+    insert into product (title, description, image, 
+      on_sale, rating, sold_count, 
+      review_count, price, created_at, 
+      updated_at)
+    values (#{title,jdbcType=VARCHAR}, #{description,jdbcType=LONGVARCHAR}, #{image,jdbcType=VARCHAR}, 
+      #{onSale,jdbcType=BOOLEAN}, #{rating,jdbcType=DOUBLE}, #{soldCount,jdbcType=INTEGER}, 
+      #{reviewCount,jdbcType=INTEGER}, #{price,jdbcType=DECIMAL}, #{createdAt,jdbcType=TIMESTAMP}, 
+      #{updatedAt,jdbcType=TIMESTAMP})
+  </insert>
+  <insert id="insertSelective" keyColumn="id" keyProperty="id" parameterType="com.lhb.sh.model.Product" useGeneratedKeys="true">
+    <!--@mbg.generated-->
+    insert into product
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="title != null">
+        title,
+      </if>
+      <if test="description != null">
+        description,
+      </if>
+      <if test="image != null">
+        image,
+      </if>
+      <if test="onSale != null">
+        on_sale,
+      </if>
+      <if test="rating != null">
+        rating,
+      </if>
+      <if test="soldCount != null">
+        sold_count,
+      </if>
+      <if test="reviewCount != null">
+        review_count,
+      </if>
+      <if test="price != null">
+        price,
+      </if>
+      <if test="createdAt != null">
+        created_at,
+      </if>
+      <if test="updatedAt != null">
+        updated_at,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="title != null">
+        #{title,jdbcType=VARCHAR},
+      </if>
+      <if test="description != null">
+        #{description,jdbcType=LONGVARCHAR},
+      </if>
+      <if test="image != null">
+        #{image,jdbcType=VARCHAR},
+      </if>
+      <if test="onSale != null">
+        #{onSale,jdbcType=BOOLEAN},
+      </if>
+      <if test="rating != null">
+        #{rating,jdbcType=DOUBLE},
+      </if>
+      <if test="soldCount != null">
+        #{soldCount,jdbcType=INTEGER},
+      </if>
+      <if test="reviewCount != null">
+        #{reviewCount,jdbcType=INTEGER},
+      </if>
+      <if test="price != null">
+        #{price,jdbcType=DECIMAL},
+      </if>
+      <if test="createdAt != null">
+        #{createdAt,jdbcType=TIMESTAMP},
+      </if>
+      <if test="updatedAt != null">
+        #{updatedAt,jdbcType=TIMESTAMP},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.lhb.sh.model.Product">
+    <!--@mbg.generated-->
+    update product
+    <set>
+      <if test="title != null">
+        title = #{title,jdbcType=VARCHAR},
+      </if>
+      <if test="description != null">
+        description = #{description,jdbcType=LONGVARCHAR},
+      </if>
+      <if test="image != null">
         image = #{image,jdbcType=VARCHAR},
+      </if>
+      <if test="onSale != null">
         on_sale = #{onSale,jdbcType=BOOLEAN},
+      </if>
+      <if test="rating != null">
         rating = #{rating,jdbcType=DOUBLE},
+      </if>
+      <if test="soldCount != null">
         sold_count = #{soldCount,jdbcType=INTEGER},
+      </if>
+      <if test="reviewCount != null">
         review_count = #{reviewCount,jdbcType=INTEGER},
+      </if>
+      <if test="price != null">
         price = #{price,jdbcType=DECIMAL},
+      </if>
+      <if test="createdAt != null">
         created_at = #{createdAt,jdbcType=TIMESTAMP},
-        updated_at = #{updatedAt,jdbcType=TIMESTAMP}
-        where id = #{id,jdbcType=INTEGER}
-    </update>
+      </if>
+      <if test="updatedAt != null">
+        updated_at = #{updatedAt,jdbcType=TIMESTAMP},
+      </if>
+    </set>
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.lhb.sh.model.Product">
+    <!--@mbg.generated-->
+    update product
+    set title = #{title,jdbcType=VARCHAR},
+      description = #{description,jdbcType=LONGVARCHAR},
+      image = #{image,jdbcType=VARCHAR},
+      on_sale = #{onSale,jdbcType=BOOLEAN},
+      rating = #{rating,jdbcType=DOUBLE},
+      sold_count = #{soldCount,jdbcType=INTEGER},
+      review_count = #{reviewCount,jdbcType=INTEGER},
+      price = #{price,jdbcType=DECIMAL},
+      created_at = #{createdAt,jdbcType=TIMESTAMP},
+      updated_at = #{updatedAt,jdbcType=TIMESTAMP}
+    where id = #{id,jdbcType=INTEGER}
+  </update>
 </mapper>

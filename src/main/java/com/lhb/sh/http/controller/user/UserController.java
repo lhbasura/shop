@@ -24,12 +24,8 @@ public class UserController extends BaseController {
     @Resource
     UserService userService;
 
-    @GetMapping("/home")
-    @ResponseBody
-    public String home()
-    {
-        return "this is home page";
-    }
+
+
 
     @GetMapping("/userlist")
     public String users(Model model) {
