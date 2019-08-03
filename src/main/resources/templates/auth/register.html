@@ -40,10 +40,7 @@
                 </div>
                 <div class="clearfix"></div>
             </form>
-            <form action="/login" name="login_form" method="post" hidden="hidden">
-                <input type="hidden"
-                       th:name="${_csrf.parameterName}"
-                       th:value="${_csrf.token}"/>
+            <form th:action="@{/login}" name="login_form" method="post" hidden="hidden">
                 <input name="username">
                 <input name="password">
             </form>

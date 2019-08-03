@@ -1,6 +1,7 @@
 package com.lhb.sh.service.mail;
 
 
+import com.lhb.sh.util.constant.MailConstant;
 import lombok.extern.slf4j.Slf4j;
 
 import org.springframework.beans.factory.annotation.Value;
@@ -23,23 +24,24 @@ import javax.mail.internet.MimeMessage;
 public class MailService  {
 
     @Resource
-    private JavaMailSender mailSender;
+    protected JavaMailSender mailSender;
 
     @Value("${spring.mail.username}")
-    private String from;
+    protected String from;
 
     @Resource
     TemplateEngine templateEngine;
 
-    private final String verifyPath="auth/verify";
-    private final String verifySubject="激活您的账户";
-    public void sendVerifyMail(String to) throws MessagingException {
+
+    public void sendHtmlMail(String to,String subject,String template) throws MessagingException {
         Context context = new Context();
-        //context.setVariable("id", "006");
-        String emailContent = templateEngine.process(verifyPath, context);
-        this.sendMail(to,verifySubject,emailContent);
+        String emailContent = templateEngine.process(template, context);
+        this.sendSimpleMail(to,subject,emailContent);
     }
-    public void sendMail(String to, String subject, String content) throws MessagingException {
+    public void sendVerifyMail(String to) throws MessagingException {
+        this.sendHtmlMail(to,MailConstant.verifySubject,MailConstant.verifyTemplate);
+    }
+    public void sendSimpleMail(String to, String subject, String content) throws MessagingException {
         MimeMessage message = mailSender.createMimeMessage();
         MimeMessageHelper helper = new MimeMessageHelper(message, true);
         helper.setFrom(from);

@@ -11,11 +11,13 @@ import org.springframework.security.core.AuthenticationException;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.stereotype.Component;
 
+import javax.annotation.Resource;
+
 @Slf4j
 @Component
 public class CustomerAuthenticationProvider implements AuthenticationProvider {
 
-    @Autowired
+    @Resource
     DbUserService userDetailsService;
 
     @Override

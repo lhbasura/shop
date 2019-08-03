@@ -14,10 +14,7 @@ public class MailServiceTest  {
 
     @Autowired
     MailService service;
-    @Test
-    public void sendSimpleMail() throws MessagingException {
-        service.sendMail("hongbo.liu@geneegroup.com","我要变强","你的付出不会白费！");
-    }
+
 
     @Test
     public void sendVerifyMail() throws MessagingException {
