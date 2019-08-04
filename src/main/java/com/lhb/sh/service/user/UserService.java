@@ -52,8 +52,8 @@ public class UserService {
 
     public void saveUser(User user) throws UserException {
         log.info("go UserService's saveUser function");
-
     }
+
 
     public void register(User user) throws UserException {
         saveUser(user);

@@ -29,4 +29,9 @@ public class User {
     private Date createdAt;
 
     private Date updatedAt;
+
+    public boolean isVerified(){
+        return emailVerifiedAt!=null;
+    }
+
 }

@@ -1,12 +1,10 @@
 <!DOCTYPE html>
-<html xmlns:layout="http://www.ultraq.net.nz/web/thymeleaf/layout"
-      xmlns:th="http://www.thymeleaf.org">
-<body>
-<div>
-    您好,这是验证邮件,请点击下面的链接完成验证,<br/>
-    <a style="color: red;" href="#" th:href="@{ http://www.baidu.com}">激活账号</a>
-</div>
-</body>
-
+<html xmlns:th="http://www.thymeleaf.org"
+      xmlns:sec="http://www.thymeleaf.org/extras/spring-security"
+      xmlns:layout="http://www.ultraq.net.nz/web/thymeleaf/layout"
+      layout:decorate="~{layout/app}">
+<section layout:fragment="content">
+    please click this <a class="link" href="http://www.baidu.com">link</a> to verify your email;
+</section>
 
 </html>

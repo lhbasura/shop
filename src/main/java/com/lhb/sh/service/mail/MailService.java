@@ -39,7 +39,7 @@ public class MailService  {
         this.sendSimpleMail(to,subject,emailContent);
     }
     public void sendVerifyMail(String to) throws MessagingException {
-        this.sendHtmlMail(to,MailConstant.verifySubject,MailConstant.verifyTemplate);
+        this.sendHtmlMail(to,MailConstant.VERIFY_SUBJECT,MailConstant.VERIFY_TEMPLATE);
     }
     public void sendSimpleMail(String to, String subject, String content) throws MessagingException {
         MimeMessage message = mailSender.createMimeMessage();

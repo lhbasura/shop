@@ -1,22 +1,18 @@
 package com.lhb.sh.config.auth;
 
+import com.lhb.sh.model.User;
+import com.lhb.sh.service.user.UserService;
+import com.lhb.sh.util.Auth;
 import lombok.extern.slf4j.Slf4j;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.security.config.annotation.authentication.builders.AuthenticationManagerBuilder;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
 import org.springframework.security.config.annotation.web.configuration.EnableWebSecurity;
 import org.springframework.security.config.annotation.web.configuration.WebSecurityConfigurerAdapter;
-import org.springframework.security.core.Authentication;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.security.core.userdetails.UserDetails;
-import org.springframework.security.web.authentication.AuthenticationSuccessHandler;
 
 import javax.annotation.Resource;
-import javax.servlet.ServletException;
-import javax.servlet.http.HttpServletRequest;
-import javax.servlet.http.HttpServletResponse;
-import java.io.IOException;
 
 /*
 please see https://blog.csdn.net/neweastsun/article/details/79824019
@@ -29,6 +25,9 @@ class WebSecurityConfig extends WebSecurityConfigurerAdapter {
     @Resource
     private CustomerAuthenticationProvider authProvider;
 
+    @Resource
+    UserService userService;
+
     @Override
     protected void configure(HttpSecurity http) throws Exception {
         log.info("config springsecurity");
@@ -39,10 +38,6 @@ class WebSecurityConfig extends WebSecurityConfigurerAdapter {
                 .and()
                 .formLogin().loginPage("/login")
                 .successHandler((request, response, authentication) -> {
-                    UserDetails userDetails = (UserDetails) SecurityContextHolder.getContext()
-                            .getAuthentication()
-                            .getPrincipal();
-                    log.info("the user is login:" + userDetails.toString());
                     response.sendRedirect("/home");
                 })
                 // .defaultSuccessUrl("/home");

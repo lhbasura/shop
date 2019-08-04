@@ -1,6 +1,6 @@
 package com.lhb.sh.config;
 
-import com.lhb.sh.http.interceptor.UserInterceptor;
+import com.lhb.sh.http.interceptor.VerifyInterceptor;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.web.servlet.config.annotation.InterceptorRegistry;
 import org.springframework.web.servlet.config.annotation.ResourceHandlerRegistry;
@@ -21,7 +21,7 @@ public class WebMvcConfig implements WebMvcConfigurer {
 
     @Override
     public void addInterceptors(InterceptorRegistry registry) {
-        registry.addInterceptor(new UserInterceptor()).addPathPatterns("/auth/*").addPathPatterns("/user/*");
+        registry.addInterceptor(new VerifyInterceptor()).addPathPatterns("/home");
     }
 
 }

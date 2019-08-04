@@ -3,13 +3,10 @@ package com.lhb.sh.http.controller.auth;
 import com.lhb.sh.http.controller.BaseController;
 import com.lhb.sh.exception.user.UserException;
 import com.lhb.sh.model.User;
-import com.lhb.sh.service.auth.DbUserService;
 import com.lhb.sh.service.user.UserService;
 import com.lhb.sh.util.ResultUtil;
 import com.lhb.sh.util.enums.AccountStaEnum;
 import lombok.extern.slf4j.Slf4j;
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
@@ -20,10 +17,9 @@ import javax.annotation.Resource;
 import javax.validation.Valid;
 import java.util.List;
 
-import com.lhb.sh.service.auth.DbUserService;
 
 @Slf4j
-@Controller(value = "auth")
+@Controller(value = "authController")
 public class AuthController extends BaseController {
     @Resource(name = "dbUserService")
     UserService userService;

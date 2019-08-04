@@ -3,14 +3,13 @@ package com.lhb.sh.http.controller;
 import com.lhb.sh.model.User;
 import com.lhb.sh.service.user.UserService;
 import lombok.extern.slf4j.Slf4j;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.ui.ModelMap;
 import org.springframework.validation.BindingResult;
 import org.springframework.validation.ObjectError;
 import org.springframework.web.bind.annotation.*;
 
+import javax.annotation.Resource;
 import javax.validation.Valid;
 import java.security.Principal;
 import java.util.List;
@@ -18,7 +17,7 @@ import java.util.List;
 @Slf4j
 @Controller
 public class IndexController {
-    @Autowired
+    @Resource
     UserService userService;
 
     @RequestMapping("/index")
