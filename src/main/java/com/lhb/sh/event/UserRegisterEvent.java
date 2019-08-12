@@ -1,6 +1,6 @@
 package com.lhb.sh.event;
 
-import com.lhb.sh.model.User;
+import com.lhb.sh.model.entity.User;
 import lombok.Getter;
 import lombok.Setter;
 import lombok.extern.slf4j.Slf4j;

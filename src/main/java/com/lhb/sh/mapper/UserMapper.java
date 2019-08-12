@@ -1,8 +1,9 @@
 package com.lhb.sh.mapper;
 
-import com.lhb.sh.model.User;
+import com.lhb.sh.model.entity.User;
 import org.apache.ibatis.annotations.Mapper;
-import org.apache.ibatis.annotations.Param;import java.util.List;
+import org.apache.ibatis.annotations.Param;
+import java.util.List;
 
 @Mapper
 public interface UserMapper {

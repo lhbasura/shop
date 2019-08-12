@@ -1,6 +1,6 @@
 package com.lhb.sh.util;
 
-import com.lhb.sh.model.User;
+import com.lhb.sh.model.entity.User;
 import com.lhb.sh.util.constant.AuthConstant;
 
 import javax.servlet.http.HttpServletRequest;

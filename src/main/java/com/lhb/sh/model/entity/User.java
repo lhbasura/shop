@@ -1,5 +1,6 @@
-package com.lhb.sh.model;
+package com.lhb.sh.model.entity;
 
+import java.io.Serializable;
 import java.util.Date;
 import lombok.Data;
 
@@ -8,7 +9,9 @@ import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
 
 @Data
-public class User {
+public class User implements Serializable {
+
+    private static final long serialVersionUID = 8637628296175218837L;
     private Integer id;
 
     @NotNull

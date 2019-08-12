@@ -1,6 +1,6 @@
 package com.lhb.sh.mapper;
 
-import com.lhb.sh.model.Product;
+import com.lhb.sh.model.entity.Product;
 
 public interface ProductMapper {
     int deleteByPrimaryKey(Integer id);

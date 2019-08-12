@@ -3,8 +3,7 @@ package com.lhb.sh.service.auth;
 import com.lhb.sh.exception.user.NullValueException;
 import com.lhb.sh.exception.user.RepeatException;
 import com.lhb.sh.exception.user.UserException;
-import com.lhb.sh.mapper.UserMapper;
-import com.lhb.sh.model.User;
+import com.lhb.sh.model.entity.User;
 
 import com.lhb.sh.service.user.UserService;
 import com.lhb.sh.util.Security;

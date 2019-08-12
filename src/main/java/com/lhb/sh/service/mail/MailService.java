@@ -8,6 +8,7 @@ import org.springframework.beans.factory.annotation.Value;
 
 import org.springframework.mail.javamail.JavaMailSender;
 import org.springframework.mail.javamail.MimeMessageHelper;
+import org.springframework.scheduling.annotation.Async;
 import org.springframework.stereotype.Component;
 import org.thymeleaf.TemplateEngine;
 import org.thymeleaf.context.Context;
@@ -38,7 +39,9 @@ public class MailService  {
         String emailContent = templateEngine.process(template, context);
         this.sendSimpleMail(to,subject,emailContent);
     }
+
     public void sendVerifyMail(String to) throws MessagingException {
+        log.info("to send verify mail");
         this.sendHtmlMail(to,MailConstant.VERIFY_SUBJECT,MailConstant.VERIFY_TEMPLATE);
     }
     public void sendSimpleMail(String to, String subject, String content) throws MessagingException {

@@ -1,7 +1,7 @@
 package com.lhb.sh.http.controller.auth;
 
 import com.lhb.sh.http.controller.BaseController;
-import com.lhb.sh.model.User;
+import com.lhb.sh.model.entity.User;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;

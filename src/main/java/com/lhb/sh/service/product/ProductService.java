@@ -2,7 +2,7 @@ package com.lhb.sh.service.product;
 
 import org.springframework.stereotype.Service;
 import javax.annotation.Resource;
-import com.lhb.sh.model.Product;
+import com.lhb.sh.model.entity.Product;
 import com.lhb.sh.mapper.ProductMapper;
 
 @Service

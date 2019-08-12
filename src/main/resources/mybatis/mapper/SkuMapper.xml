@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.lhb.sh.mapper.SkuMapper">
-  <resultMap id="BaseResultMap" type="com.lhb.sh.model.Sku">
+  <resultMap id="BaseResultMap" type="com.lhb.sh.model.entity.Sku">
     <!--@mbg.generated-->
     <id column="id" jdbcType="INTEGER" property="id" />
     <result column="title" jdbcType="VARCHAR" property="title" />
@@ -28,7 +28,7 @@
     delete from sku
     where id = #{id,jdbcType=INTEGER}
   </delete>
-  <insert id="insert" keyColumn="id" keyProperty="id" parameterType="com.lhb.sh.model.Sku" useGeneratedKeys="true">
+  <insert id="insert" keyColumn="id" keyProperty="id" parameterType="com.lhb.sh.model.entity.Sku" useGeneratedKeys="true">
     <!--@mbg.generated-->
     insert into sku (title, description, price, 
       stock, product_id, created_at, 
@@ -37,7 +37,7 @@
       #{stock,jdbcType=INTEGER}, #{productId,jdbcType=INTEGER}, #{createdAt,jdbcType=TIMESTAMP}, 
       #{updatedAt,jdbcType=TIMESTAMP})
   </insert>
-  <insert id="insertSelective" keyColumn="id" keyProperty="id" parameterType="com.lhb.sh.model.Sku" useGeneratedKeys="true">
+  <insert id="insertSelective" keyColumn="id" keyProperty="id" parameterType="com.lhb.sh.model.entity.Sku" useGeneratedKeys="true">
     <!--@mbg.generated-->
     insert into sku
     <trim prefix="(" suffix=")" suffixOverrides=",">
@@ -87,7 +87,7 @@
       </if>
     </trim>
   </insert>
-  <update id="updateByPrimaryKeySelective" parameterType="com.lhb.sh.model.Sku">
+  <update id="updateByPrimaryKeySelective" parameterType="com.lhb.sh.model.entity.Sku">
     <!--@mbg.generated-->
     update sku
     <set>
@@ -115,7 +115,7 @@
     </set>
     where id = #{id,jdbcType=INTEGER}
   </update>
-  <update id="updateByPrimaryKey" parameterType="com.lhb.sh.model.Sku">
+  <update id="updateByPrimaryKey" parameterType="com.lhb.sh.model.entity.Sku">
     <!--@mbg.generated-->
     update sku
     set title = #{title,jdbcType=VARCHAR},

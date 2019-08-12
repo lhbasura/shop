@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.lhb.sh.mapper.ProductMapper">
-  <resultMap id="BaseResultMap" type="com.lhb.sh.model.Product">
+  <resultMap id="BaseResultMap" type="com.lhb.sh.model.entity.Product">
     <!--@mbg.generated-->
     <id column="id" jdbcType="INTEGER" property="id" />
     <result column="title" jdbcType="VARCHAR" property="title" />
@@ -32,7 +32,7 @@
     delete from product
     where id = #{id,jdbcType=INTEGER}
   </delete>
-  <insert id="insert" keyColumn="id" keyProperty="id" parameterType="com.lhb.sh.model.Product" useGeneratedKeys="true">
+  <insert id="insert" keyColumn="id" keyProperty="id" parameterType="com.lhb.sh.model.entity.Product" useGeneratedKeys="true">
     <!--@mbg.generated-->
     insert into product (title, description, image, 
       on_sale, rating, sold_count, 
@@ -43,7 +43,7 @@
       #{reviewCount,jdbcType=INTEGER}, #{price,jdbcType=DECIMAL}, #{createdAt,jdbcType=TIMESTAMP}, 
       #{updatedAt,jdbcType=TIMESTAMP})
   </insert>
-  <insert id="insertSelective" keyColumn="id" keyProperty="id" parameterType="com.lhb.sh.model.Product" useGeneratedKeys="true">
+  <insert id="insertSelective" keyColumn="id" keyProperty="id" parameterType="com.lhb.sh.model.entity.Product" useGeneratedKeys="true">
     <!--@mbg.generated-->
     insert into product
     <trim prefix="(" suffix=")" suffixOverrides=",">
@@ -111,7 +111,7 @@
       </if>
     </trim>
   </insert>
-  <update id="updateByPrimaryKeySelective" parameterType="com.lhb.sh.model.Product">
+  <update id="updateByPrimaryKeySelective" parameterType="com.lhb.sh.model.entity.Product">
     <!--@mbg.generated-->
     update product
     <set>
@@ -148,7 +148,7 @@
     </set>
     where id = #{id,jdbcType=INTEGER}
   </update>
-  <update id="updateByPrimaryKey" parameterType="com.lhb.sh.model.Product">
+  <update id="updateByPrimaryKey" parameterType="com.lhb.sh.model.entity.Product">
     <!--@mbg.generated-->
     update product
     set title = #{title,jdbcType=VARCHAR},

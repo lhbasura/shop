@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.lhb.sh.mapper.UserMapper">
-  <resultMap id="BaseResultMap" type="com.lhb.sh.model.User">
+  <resultMap id="BaseResultMap" type="com.lhb.sh.model.entity.User">
     <!--@mbg.generated-->
     <id column="id" jdbcType="INTEGER" property="id" />
     <result column="username" jdbcType="VARCHAR" property="username" />
@@ -28,7 +28,7 @@
     delete from user
     where id = #{id,jdbcType=INTEGER}
   </delete>
-  <insert id="insert" keyColumn="id" keyProperty="id" parameterType="com.lhb.sh.model.User" useGeneratedKeys="true">
+  <insert id="insert" keyColumn="id" keyProperty="id" parameterType="com.lhb.sh.model.entity.User" useGeneratedKeys="true">
     <!--@mbg.generated-->
     insert into user (username, email, email_verified_at, 
       `password`, remember_token, created_at, 
@@ -37,7 +37,7 @@
       #{password,jdbcType=VARCHAR}, #{rememberToken,jdbcType=VARCHAR}, #{createdAt,jdbcType=TIMESTAMP}, 
       #{updatedAt,jdbcType=TIMESTAMP})
   </insert>
-  <insert id="insertSelective" keyColumn="id" keyProperty="id" parameterType="com.lhb.sh.model.User" useGeneratedKeys="true">
+  <insert id="insertSelective" keyColumn="id" keyProperty="id" parameterType="com.lhb.sh.model.entity.User" useGeneratedKeys="true">
     <!--@mbg.generated-->
     insert into user
     <trim prefix="(" suffix=")" suffixOverrides=",">
@@ -87,7 +87,7 @@
       </if>
     </trim>
   </insert>
-  <update id="updateByPrimaryKeySelective" parameterType="com.lhb.sh.model.User">
+  <update id="updateByPrimaryKeySelective" parameterType="com.lhb.sh.model.entity.User">
     <!--@mbg.generated-->
     update user
     <set>
@@ -115,7 +115,7 @@
     </set>
     where id = #{id,jdbcType=INTEGER}
   </update>
-  <update id="updateByPrimaryKey" parameterType="com.lhb.sh.model.User">
+  <update id="updateByPrimaryKey" parameterType="com.lhb.sh.model.entity.User">
     <!--@mbg.generated-->
     update user
     set username = #{username,jdbcType=VARCHAR},

@@ -2,7 +2,7 @@ package com.lhb.sh.http.controller.auth;
 
 import com.lhb.sh.http.controller.BaseController;
 import com.lhb.sh.exception.user.UserException;
-import com.lhb.sh.model.User;
+import com.lhb.sh.model.entity.User;
 import com.lhb.sh.service.user.UserService;
 import com.lhb.sh.util.ResultUtil;
 import com.lhb.sh.util.enums.AccountStaEnum;
@@ -47,6 +47,7 @@ public class AuthController extends BaseController {
         }
         try {
             userService.register(user);
+            log.info("register success");
             return ResultUtil.getJson(AccountStaEnum.success.getCode(), AccountStaEnum.success.getInfo());
         } catch (UserException e) {
             return ResultUtil.getJson(e.getCode(), e.getMessage());

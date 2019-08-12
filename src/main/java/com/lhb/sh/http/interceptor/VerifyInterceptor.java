@@ -1,6 +1,6 @@
 package com.lhb.sh.http.interceptor;
 
-import com.lhb.sh.model.User;
+import com.lhb.sh.model.entity.User;
 import com.lhb.sh.util.Auth;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.web.servlet.HandlerInterceptor;

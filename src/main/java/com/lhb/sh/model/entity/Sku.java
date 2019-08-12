@@ -1,4 +1,4 @@
-package com.lhb.sh.model;
+package com.lhb.sh.model.entity;
 
 import java.math.BigDecimal;
 import java.util.Date;

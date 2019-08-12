@@ -3,7 +3,7 @@ package com.lhb.sh.service.product;
 import org.springframework.stereotype.Service;
 import javax.annotation.Resource;
 import com.lhb.sh.mapper.SkuMapper;
-import com.lhb.sh.model.Sku;
+import com.lhb.sh.model.entity.Sku;
 @Service
 public class SkuService{
 

@@ -1,6 +1,6 @@
 package com.lhb.sh.http.controller;
 
-import com.lhb.sh.model.User;
+import com.lhb.sh.model.entity.User;
 import com.lhb.sh.util.Auth;
 import org.springframework.stereotype.Controller;
 

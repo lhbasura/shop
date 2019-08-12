@@ -1,6 +1,6 @@
 package com.lhb.sh.mapper;
 
-import com.lhb.sh.model.Sku;
+import com.lhb.sh.model.entity.Sku;
 
 public interface SkuMapper {
     int deleteByPrimaryKey(Integer id);

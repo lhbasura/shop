@@ -1,13 +1,9 @@
 package com.lhb.sh.http.filter;
 
-import com.lhb.sh.model.User;
+import com.lhb.sh.model.entity.User;
 import com.lhb.sh.service.user.UserService;
 import com.lhb.sh.util.Auth;
-import com.lhb.sh.util.constant.AuthConstant;
 import lombok.extern.slf4j.Slf4j;
-import org.springframework.security.core.Authentication;
-import org.springframework.security.core.context.SecurityContextHolder;
-import org.springframework.security.core.userdetails.UserDetails;
 
 import javax.annotation.Resource;
 import javax.servlet.*;

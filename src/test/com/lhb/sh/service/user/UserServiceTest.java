@@ -1,27 +1,30 @@
-package com.lhb.sh.http.controller.auth;
+package com.lhb.sh.service.user;
 
 import com.lhb.sh.ShopApplicationTest;
 import com.lhb.sh.exception.user.UserException;
 import com.lhb.sh.model.entity.User;
-import com.lhb.sh.service.user.UserService;
 import net.bytebuddy.utility.RandomString;
 import org.junit.Test;
 
 import javax.annotation.Resource;
 
+import java.util.concurrent.CountDownLatch;
 
-public class AuthControllerTest extends ShopApplicationTest {
+import static org.junit.Assert.*;
+
+public class UserServiceTest extends ShopApplicationTest {
 
     @Resource(name = "dbUserService")
     UserService userService;
 
     @Test
-    public void register() throws UserException {
+    public void register() throws UserException, InterruptedException {
         User user=new User();
+        System.out.println(user);
         RandomString randomString=new RandomString(8);
-        user.setUsername("lhbasura");
+        user.setUsername(randomString.nextString());
+        user.setPassword(randomString.nextString());
         user.setEmail("hongbo.liu@geneegroup.com");
-        user.setPassword("root");
         userService.register(user);
     }
 }
