@@ -2,6 +2,7 @@ package com.lhb.sh.model.entity;
 
 import java.io.Serializable;
 import java.util.Date;
+
 import lombok.Data;
 
 import javax.validation.constraints.Email;
@@ -17,13 +18,13 @@ public class User implements Serializable {
     @NotNull
     private String username;
 
-    @Email
+    @Email(message = "invalid mail")
     @NotNull
     private String email;
 
     private Date emailVerifiedAt;
 
-    @Size(min = 6)
+    @Size(min = 6, message = "password must longer then 6 character")
     @NotNull
     private String password;
 
@@ -33,8 +34,8 @@ public class User implements Serializable {
 
     private Date updatedAt;
 
-    public boolean isVerified(){
-        return emailVerifiedAt!=null;
+    public boolean isVerified() {
+        return emailVerifiedAt != null;
     }
 
 }

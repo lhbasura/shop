@@ -1,10 +1,17 @@
 <!DOCTYPE html>
-<html xmlns:th="http://www.thymeleaf.org"
-      xmlns:sec="http://www.thymeleaf.org/extras/spring-security"
-      xmlns:layout="http://www.ultraq.net.nz/web/thymeleaf/layout"
+<html xmlns:layout="http://www.ultraq.net.nz/web/thymeleaf/layout"
       layout:decorate="~{layout/app}">
 <section layout:fragment="content">
-    please click this <a class="link" href="http://www.baidu.com">link</a> to verify your email;
+    <div class="container">
+        <div class="panel panel-success">
+            <div class="panel-heading">
+                <h3 class="panel-title">Panel title</h3>
+            </div>
+            <div class="panel-body">
+                please click this <a class="link" href="http://www.baidu.com">link</a> to verify your email
+            </div>
+        </div>
+    </div>
 </section>
 
 </html>
