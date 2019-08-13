@@ -1,11 +1,8 @@
 package com.lhb.sh.util;
 
-import com.google.gson.Gson;
 import com.lhb.sh.ShopApplicationTest;
-import lombok.extern.slf4j.Slf4j;
 import org.junit.Test;
 
-import static org.junit.Assert.*;
 
 public class ResultUtilTest extends ShopApplicationTest{
 

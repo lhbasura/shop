@@ -8,9 +8,7 @@ import org.junit.Test;
 
 import javax.annotation.Resource;
 
-import java.util.concurrent.CountDownLatch;
 
-import static org.junit.Assert.*;
 
 public class UserServiceTest extends ShopApplicationTest {
 

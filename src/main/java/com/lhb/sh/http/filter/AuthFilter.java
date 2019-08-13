@@ -19,9 +19,10 @@ public class AuthFilter implements Filter {
         HttpServletRequest request= (HttpServletRequest) servletRequest;
         HttpServletResponse response= (HttpServletResponse) servletResponse;
         Principal principal=request.getUserPrincipal();
-        if(principal==null)
+        if(principal!=null)
         {
             response.sendRedirect("/home");
         }
+        filterChain.doFilter(request,response);
     }
 }
