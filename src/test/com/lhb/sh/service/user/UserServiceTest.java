@@ -7,7 +7,7 @@ import net.bytebuddy.utility.RandomString;
 import org.junit.Test;
 
 import javax.annotation.Resource;
-
+import java.util.Date;
 
 
 public class UserServiceTest extends ShopApplicationTest {
@@ -25,4 +25,6 @@ public class UserServiceTest extends ShopApplicationTest {
         user.setEmail("hongbo.liu@geneegroup.com");
         userService.register(user);
     }
+
+
 }

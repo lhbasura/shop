@@ -1,7 +1,7 @@
 package com.lhb.sh.provider;
 
 import com.lhb.sh.model.entity.User;
-import com.lhb.sh.util.constant.MailConstant;
+import com.lhb.sh.util.constant.RabbitConstant;
 import lombok.Data;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.amqp.core.AmqpTemplate;
@@ -17,7 +17,7 @@ public class RabbitProvider {
     private AmqpTemplate amqpTemplate;
     public void sendMail(User user){
         log.info("send user to RabbitMq:"+user);
-        amqpTemplate.convertAndSend(MailConstant.MAIL_QUEUE,user);
+        amqpTemplate.convertAndSend(RabbitConstant.MAIL_QUEUE,user);
     }
 
 }

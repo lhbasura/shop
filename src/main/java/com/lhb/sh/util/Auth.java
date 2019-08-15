@@ -14,7 +14,6 @@ public class Auth {
     public static void setCurrentUser(HttpServletRequest request,User user){
         HttpSession session=request.getSession();
         session.setAttribute(AuthConstant.CURRENT_USER,user);
-
     }
 
 }
