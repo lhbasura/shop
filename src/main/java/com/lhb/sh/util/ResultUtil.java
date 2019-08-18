@@ -13,9 +13,6 @@ import java.util.Map;
 /**
  * @Description: 消息结果集
  * @ClassName: ResultMap
- * @author: lyons<zhanglei>
- * @date: 2017年1月19日 下午1:18:00
- * @version: [1.0]
  */
 public class ResultUtil {
     private static Map getInstance()

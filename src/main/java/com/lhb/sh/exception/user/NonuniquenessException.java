@@ -1,15 +1,19 @@
 package com.lhb.sh.exception.user;
 
-public class NonuniquenessException extends UserException {
-    private static final long serialVersionUID = 1L;
+import com.lhb.sh.util.enums.AccountStaEnum;
 
-    public NonuniquenessException(int code, String message) {
-        super(code, message);
-    }
+public class NonuniquenessException extends UserException {
+
 
     public NonuniquenessException(String message) {
         super(message);
     }
 
+    public NonuniquenessException(int code, String message) {
+        super(code, message);
+    }
 
+    public NonuniquenessException(AccountStaEnum accountStaEnum) {
+        super(accountStaEnum);
+    }
 }

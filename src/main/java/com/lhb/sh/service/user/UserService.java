@@ -52,6 +52,7 @@ public class UserService {
 
     public void saveUser(User user) throws UserException {
         log.info("go UserService's saveUser function");
+        userMapper.updateByPrimaryKey(user);
     }
 
 

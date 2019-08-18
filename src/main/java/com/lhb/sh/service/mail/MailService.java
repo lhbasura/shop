@@ -40,7 +40,7 @@ public class MailService {
 
 
     public void sendVerifyMail(User user) throws MessagingException {
-        log.info("to send verify mail");
+        log.info("to send verify verify");
         Context context = new Context();
         long expire = new Date().getTime() + 60 * 15;
         String signature = SignatureUtil.genVerifySignature(user.getId(), expire);

@@ -1,17 +1,55 @@
 <!DOCTYPE html>
-<html xmlns:layout="http://www.ultraq.net.nz/web/thymeleaf/layout"
+<html  xmlns:th="http://www.thymeleaf.org"
+        xmlns:layout="http://www.ultraq.net.nz/web/thymeleaf/layout"
       layout:decorate="~{layout/app}">
 <section layout:fragment="content">
     <div class="container">
         <div class="panel panel-success">
             <div class="panel-heading">
-                <h3 class="panel-title">Panel title</h3>
+                <h3 class="panel-title">Verify your account</h3>
             </div>
             <div class="panel-body">
-                please click this <a class="link" href="http://www.baidu.com">link</a> to verify your email
+                <input id="user_id" th:value="${uid}" hidden>
+                please click this <a id="send_verify" class="link" href="#">link</a> to send verify
+                mail to your email
             </div>
         </div>
     </div>
 </section>
+<script layout:fragment="after_script">
+    $(function () {
+        $('body').on('click', '#send_verify', function () {
+            console.log('you clicked send_verify')
+            var csrfToken = $("meta[name='_csrf']").attr("content");
+            var csrfHeader = $("meta[name='_csrf_header']").attr("content");
+            var uid=$('#user_id').val();
+            console.log(uid)
+            $.ajax({
+                    url: '/sendVerify',
+                    type: 'post',
+                    dataType: "json",
+                    async: true,
+                    data: {id: uid},
+                    beforeSend: function (request) {
+                        request.setRequestHeader(csrfHeader, csrfToken); // 添加  CSRF Token
+                    },
+                    success: function (result) {
+                        console.log('result is ', result)
+                        console.log('code:',result['code'])
+                        if (result['code'] == 200) {
+                            console.log('go there')
+                            $('.modal-body').text('you have send the verify mail to your mail box')
+                            $('#myModal').modal('show')
+                        }
+                    },
+                    error: function (request) {
+                        $('.modal-body').text('failed')
+                        $('#myModal').modal('show')
+                    }
+                }
+            )
+        });
 
+    })
+</script>
 </html>

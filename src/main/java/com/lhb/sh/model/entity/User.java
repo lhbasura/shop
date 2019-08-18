@@ -18,7 +18,7 @@ public class User implements Serializable {
     @NotNull
     private String username;
 
-    @Email(message = "invalid mail")
+    @Email(message = "invalid verify")
     @NotNull
     private String email;
 
