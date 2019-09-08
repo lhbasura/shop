@@ -16,17 +16,23 @@ swagger:
 spring:
   profiles:
     active: local
+
   mail:
     host: smtp.qq.com
-    username: xxx@xxx.com
-    password: xxxxxx
+    password: 如果是qq邮箱,这个地方是授权码 ,不是密码
     properties:
       mail:
         smtp:
           auth: true
+          socketFactory:
+            class: javax.net.ssl.SSLSocketFactory
+            port: 465
+          ssl:
+            trust: smtp.qq.com
           starttls:
             enable: true
             required: true
+    username: lhbasura
     default-encoding: utf-8
   thymeleaf:
     cache: false

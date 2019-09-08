@@ -2,6 +2,7 @@ package com.lhb.sh.service.mail;
 
 import com.lhb.sh.ShopApplicationTest;
 import com.lhb.sh.model.entity.User;
+import com.lhb.sh.provider.RabbitProvider;
 import com.lhb.sh.service.user.UserService;
 import lombok.extern.slf4j.Slf4j;
 import org.junit.Test;
